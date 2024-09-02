@@ -1,1 +1,1 @@
-### Data, simulation codes and analysis scripts for buden of GFP deoptimization project
+### Data, simulation codes and analysis scripts for GFP deoptimization/cell burden project
