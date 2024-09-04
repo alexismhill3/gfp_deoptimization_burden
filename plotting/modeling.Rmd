@@ -1,0 +1,230 @@
+```{r}
+library(tidyverse)
+```
+
+# corresponding python notebook: calibrate_single_population_charging.ipynb
+
+Parameters: 
+time_limit = 200
+time_step = 5
+transcript_lens = 1000
+cellular_transcript_copy_number = 100
+gfp_transcript_copy_number = 10
+ribosome_copy_number = 500
+total_trna = 2500
+ecol_rbs_rate = 100000.0
+ribosome_binding_rate = 0.001
+trna_charging_rates = [10.0, 50.0, 100.0, 250.0, 500.0, 1000.0, 5000.0]
+transcript_names = ["cellularProtein", "GFP"]
+trna_composition = (0.7, 0.3)
+ecol_mrna_composition = ecol_mrna_composition
+gfp_mrna_compositions = [(0.7, 0.3)]
+ribosome_speed = 3 
+ribosome_footprint = 15
+
+date = "feb-27-2024"
+
+```{r}
+df_prot_cal <- read_csv("../processed_data/calibrate_single_population_charging_1e6.csv")
+```
+
+```{r}
+df_prot_cal %>% filter(species == "cellularProtein") %>% 
+  ggplot(aes(x = ecol_comp, y = protein, color = charging_rate, group = charging_rate, alpha = charging_rate != 250.0)) +
+  geom_line(linewidth = 2) +
+  #geom_vline(xintercept=0.7, linetype=2) +
+  scale_color_distiller(trans = "log10", 
+                     palette = "Blues",
+                     name = expression(K[charge]),
+                     direction=1,
+                     breaks = c(10, 100, 1000),
+                     labels = c(expression(10^{1}), expression(10^{2}), expression(10^{3}))) +
+  scale_x_continuous(name = expression(f[opt]^{cell})) +
+  scale_y_continuous(name = "protein",
+                     breaks=c(0, 50000, 100000),
+                     labels=c(0, expression(5*"x"*10^{4}), expression(1*"x"*10^{5}))) +
+  scale_alpha_manual(values = c(1, 1), guide = FALSE) +
+  theme_bw() +
+  theme(text = element_text(size = 16),
+        legend.position=c(.1,.7),
+        legend.margin=margin(c(5,10,15,10)),
+        legend.box.background = element_rect(color = "grey"))
+ggsave("fig/cellular_baseline_speed_3.png", width = 7, height = 4)
+```
+
+# corresponding python notebook: tacc-grid_search_speed_vs_charging.ipynb
+
+```{r}
+df_grid <- read_csv("../processed_data/speed_vs_charging_grid_search.csv")
+```
+
+
+```{r}
+df_grid_form <- df_grid %>% 
+  filter(species %in% c("free ribosome", "ATA_charged", "TTT_charged")) %>%
+  pivot_wider(names_from = species, values_from = protein, id_cols = c(speed, charging_rate, ecol)) %>%
+  mutate(ATA_charged_perc = ATA_charged / (2500 * 0.3),
+         TTT_charged_perc = TTT_charged / (2500 * 0.7),
+         free_rib_perc = `free ribosome` / 500) %>%
+  filter(ecol == 0.6)
+#df_grid_form %>% filter(ecol == 0.6)
+```
+
+```{r}
+base_plot <- function() {
+  ggplot() +
+  scale_y_discrete(expand = expansion(mult = c(0, 0))) +
+  scale_x_discrete(expand = expansion(mult = c(0, 0))) +
+  ylab(expression(K[charge])) +
+  xlab(expression(K[speed])) +
+  theme_bw() +
+  theme(panel.border = element_blank(),
+        legend.position = "bottom")
+}
+
+grid_opt <- base_plot() + 
+  geom_tile(data=df_grid_form, aes(y = as.factor(charging_rate), x = as.factor(speed), fill = TTT_charged_perc)) +
+  scale_fill_continuous_diverging(palette = "Blue-Red", 
+                                  mid = 0.75,
+                                  name = expression(T[c]^{opt})) +
+  geom_point(aes(x=3, y=3))
+  
+grid_non_opt <- base_plot() + 
+  geom_tile(data=df_grid_form, aes(y = as.factor(charging_rate), x = as.factor(speed), fill = ATA_charged_perc)) +
+  scale_fill_continuous_diverging(palette = "Blue-Red", 
+                                  mid = 0.75,
+                                  name = expression(T[c]^{non-opt})) +
+  geom_point(aes(x=3, y=3))
+
+
+grid_rib <- base_plot() + 
+  geom_tile(data=df_grid_form, aes(y = as.factor(charging_rate), x = as.factor(speed), fill = free_rib_perc)) +
+  scale_fill_continuous_diverging(palette = "Blue-Red", 
+                                  mid = 0.15,
+                                  name = expression(R[f])) +
+  geom_point(aes(x=3, y=3))
+
+```
+
+```{r, fig.width=9, fig.height=3}
+cowplot::plot_grid(grid_opt, grid_non_opt, grid_rib, ncol = 3, labels = c("A", "B", "C"))
+ggsave("fig/grid_search.png", width = 9, height = 3)
+```
+
+# corresponding python notebook: tacc-ecol-codon-use-trna_skew.ipynb
+
+time_limit = 100
+time_step = 5
+transcript_lens = [1000, 300]
+cellular_transcript_copy_number = 100
+gfp_transcript_copy_number = 20
+ribosome_copy_number = 500
+total_trna = 2500
+ecol_rbs_rate = 100000.0
+ribosome_binding_rates = [10000.0, 30000.0, 100000.0, 300000.0, 1000000.0, 3000000.0]
+trna_charging_rates = [10.0, 30.0, 100.0, 300.0, 1000.0, 3000.0, 10000.0]
+transcript_names = ["cellularProtein", "GFP"]
+#trna_composition = [(0.7, 0.3)]
+gfp_mrna_compositions = [(0.9, 0.1), (0.7, 0.3), (0.5, 0.5), (0.3, 0.7), (0.1, 0.9)]
+ribosome_speed = 0.5
+ribosome_footprint = 15
+ecol_mrna_compositions = [(0.2, 0.8), (0.4, 0.6), (0.6, 0.4), (0.7, 0.3), (0.8, 0.2), (1.0, 0)]
+
+```{r}
+df_skew <- read_csv("../processed_data/gfp_regression_ecol_codon_use_speed_0.5_trna_0.7.csv")
+```
+
+```{r, fig.width=8, fig.height=2.5}
+gfp_plot <- df_skew %>% filter(charging_rate == 100, ecol %in% c(0.6, 0.8, 1.0)) %>%
+  ggplot(aes(GFP, cellularProtein_norm, color = factor(codon))) +
+    geom_point(size=2) + 
+    geom_smooth(method = "lm", se = FALSE, formula = y ~ x + 1, fullrange=TRUE) +
+    facet_wrap(~ecol, labeller = label_bquote(f[opt] ^ cell == .(ecol))) +
+    xlab("GFP") +
+    ylab("normalized cell protein") +
+    scale_y_continuous(limits = c(0.5, 1)) +
+    #scale_x_continuous(breaks= c(2500, 5000, 7500)) +
+    #scale_x_continuous(limits=c(0, 10000)) + scale_y_continuous(limits=c(0.8, 1.0)) +
+    scale_color_discrete_sequential(name=expression(f[opt]^GFP), palette = "viridis") +
+    theme_bw() +
+    theme(panel.grid.minor.x = element_blank(),
+          panel.grid.minor.y = element_blank())
+gfp_plot
+```
+
+```{r}
+# data for each "experiment" w/ different GFP constructs, to be plotted separately
+points <- df_skew %>% filter(charging_rate == 100, gfp_rbs_foldx == 30.0, ecol %in% c(0.6, 0.8, 1.0)) %>%
+  mutate(tot_protein = GFP + cellularProtein) %>%
+  mutate(average_codon_use = ((100 * 1000 * ecol) + (20 * 100 * 30 * codon)) / ((100 * 1000) + (20 * 100 * 30))) %>%
+  select(codon, ecol, average_codon_use, cellularProtein, tot_protein)
+```
+
+
+```{r}
+base_plot <- function (data) {
+  data %>% filter(charging_rate == 100, gfp_rbs_foldx == 30.0) %>%
+  mutate(tot_protein = GFP + cellularProtein) %>%
+  mutate(average_codon_use = ((100 * 1000 * ecol) + (20 * 100 * 30 * codon)) / ((100 * 1000) + (20 * 100 * 30))) %>%
+  ggplot(aes(x=average_codon_use, y=tot_protein)) +
+  geom_smooth(se = FALSE, color="black") +
+  scale_x_continuous(name = "overall codon use",
+                         breaks = c(0, 0.25, 0.5, 0.75, 1),
+                         labels = c("0", "0.25", "0.5", "0.75", "1")) +
+  scale_y_continuous(name = "total protein") +
+  theme_classic() +
+  theme(axis.title = element_text(size = 12),
+            axis.text = element_text(size = 12),
+            legend.title = element_text(size=12),
+            axis.ticks = element_blank(),
+            axis.text.y = element_blank(),
+            axis.text.x = element_blank(),
+            legend.position = "none"
+  )
+}
+```
+
+
+```{r}
+p1_data <- points %>% filter(ecol == 0.6)
+p1 <- base_plot(df_skew) + 
+  geom_point(data=p1_data, 
+             aes(x = average_codon_use, y=tot_protein, color = factor(average_codon_use)),
+             size = 2) +
+  scale_color_discrete_sequential(palette = "viridis") +
+  geom_vline(xintercept = 0.6, alpha=0.5, linewidth=1.25)
+
+p2_data <- points %>% filter(ecol == 0.8)
+p2 <- base_plot(df_skew) + 
+  geom_point(data=p2_data, 
+             aes(x = average_codon_use, y=tot_protein, color = factor(average_codon_use)),
+             size = 2) +
+  scale_color_discrete_sequential(palette = "viridis") +
+  geom_vline(xintercept = 0.8, alpha=0.5, linewidth=1.25)
+
+
+p3_data <- points %>% filter(ecol == 1)
+p3 <- base_plot(df_skew) + 
+  geom_point(data=p3_data, 
+             aes(x = average_codon_use, y=tot_protein, color = factor(average_codon_use)),
+             size = 2) +
+  scale_color_discrete_sequential(palette = "viridis") +
+  geom_vline(xintercept = 1.0, alpha=0.5, linewidth=1.25)
+
+
+opt_plot <- cowplot::plot_grid(p1, p2, p3, nrow = 1, rel_widths = c(1, 1, 1))
+```
+
+```{r}
+legend <- get_legend(gfp_plot)
+p1 <- cowplot::plot_grid(gfp_plot + theme(legend.position = "none"), opt_plot, ncol = 1, align = 'v')
+cowplot::plot_grid(p1, legend, rel_widths = c(1, 0.2))
+ggsave("fig/gfp_experiment_cell_fopt_6_8_10.png", width = 7, height = 4)
+```
+
+
+
+
+
+
+
