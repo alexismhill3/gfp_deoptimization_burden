@@ -25,7 +25,7 @@ ribosome_footprint = 15
 date = "feb-27-2024"
 
 ```{r}
-df_prot_cal <- read_csv("calibrate_single_population_charging_1e6.csv")
+df_prot_cal <- read_csv("../processed_data/calibrate_single_population_charging_1e6.csv")
 ```
 
 ```{r}
@@ -49,13 +49,13 @@ df_prot_cal %>% filter(species == "cellularProtein") %>%
         legend.position=c(.1,.7),
         legend.margin=margin(c(5,10,15,10)),
         legend.box.background = element_rect(color = "grey"))
-ggsave("figures/protein_optimal_speed_3.png", width = 7, height = 4)
+ggsave("fig/cellular_baseline_speed_3.png", width = 7, height = 4)
 ```
 
 # corresponding python notebook: tacc-grid_search_speed_vs_charging.ipynb
 
 ```{r}
-df_grid <- read_csv("speed_vs_charging_grid_search.csv")
+df_grid <- read_csv("../processed_data/speed_vs_charging_grid_search.csv")
 ```
 
 
@@ -108,7 +108,7 @@ grid_rib <- base_plot() +
 
 ```{r, fig.width=9, fig.height=3}
 cowplot::plot_grid(grid_opt, grid_non_opt, grid_rib, ncol = 3, labels = c("A", "B", "C"))
-ggsave("figures/grid_search.png", width = 12, height = 3)
+ggsave("fig/grid_search.png", width = 9, height = 3)
 ```
 
 # corresponding python notebook: tacc-ecol-codon-use-trna_skew.ipynb
@@ -131,7 +131,7 @@ ribosome_footprint = 15
 ecol_mrna_compositions = [(0.2, 0.8), (0.4, 0.6), (0.6, 0.4), (0.7, 0.3), (0.8, 0.2), (1.0, 0)]
 
 ```{r}
-df_skew <- read_csv("gfp_regression_ecol_codon_use_speed_0.5_trna_0.7.csv")
+df_skew <- read_csv("../processed_data/gfp_regression_ecol_codon_use_speed_0.5_trna_0.7.csv")
 ```
 
 ```{r, fig.width=8, fig.height=2.5}
@@ -213,13 +213,13 @@ p3 <- base_plot(df_skew) +
 
 
 opt_plot <- cowplot::plot_grid(p1, p2, p3, nrow = 1, rel_widths = c(1, 1, 1))
-opt_plot
 ```
+
 ```{r}
 legend <- get_legend(gfp_plot)
 p1 <- cowplot::plot_grid(gfp_plot + theme(legend.position = "none"), opt_plot, ncol = 1, align = 'v')
 cowplot::plot_grid(p1, legend, rel_widths = c(1, 0.2))
-ggsave("figures/gfp_experiment_cell_fopt_6_8_10.png", width = 7, height = 4)
+ggsave("fig/gfp_experiment_cell_fopt_6_8_10.png", width = 7, height = 4)
 ```
 
 
