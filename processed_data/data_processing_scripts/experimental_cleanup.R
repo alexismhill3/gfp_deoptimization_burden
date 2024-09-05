@@ -86,7 +86,7 @@ names(master_df )[names(master_df ) == 'tgt_fluor'] <- 'fluor'
 names(master_df )[names(master_df ) == 'tgt_expression'] <- 'expression'
 
 per_gfp_df <-  master_df %>% filter(groupID %like% "GFP")
-per_mch_df <-  master_df %>% filter(groupID %like% "GFP")
+per_mch_df <-  master_df %>% filter(groupID %like% "MCH")
 
 write.csv(per_gfp_df, file = "../experimental_per_gfp.csv")
 write.csv(per_mch_df, file = "../experimental_per_mcherry.csv")
