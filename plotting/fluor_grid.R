@@ -9,16 +9,16 @@ library(tidyverse)
 library(scales)
 
 # ----------------- Plot logic
-plot_growth <- function(df, strain_name){
+plot_fluor <- function(df, strain_name){
   filtered_master <- df %>% filter(groupID %like% strain_name)
-  return(ggplot() + 
-           geom_line(data=filtered_master, aes(x = time, y = OD660, group=groupID, alpha = 0.05)) +
-           scale_x_time(breaks = scales::breaks_width("2 hours"), labels=NULL, limits=c(0, 900*4*8)) +
-           geom_vline(xintercept=t1, linetype='dashed') +
-           geom_vline(xintercept=t3, linetype='dashed')  + theme_bw() +
-           xlab("") + ylab("") + scale_y_continuous(limits = c(0, 1), labels=NULL) +
-           theme(legend.position="none") + theme(axis.text=element_text(size=16), axis.title=element_text(size=20)))}
-
+  subplot <- ggplot() + 
+    geom_line(data=filtered_master, aes(x = time, y = fluor, group=groupID, alpha = 0.05)) +
+    scale_x_time(breaks = scales::breaks_width("2 hours"), labels=NULL, limits=c(0, 900*4*8)) +
+    geom_vline(xintercept=t1-900*shift_amnt, linetype='dashed') +
+    geom_vline(xintercept=t3-900*shift_amnt, linetype='dashed') + theme_bw() +
+    theme(axis.text=element_text(size=16), axis.title=element_text(size=20), legend.position="none")+ 
+    scale_y_continuous(limits = c(0, 16000), labels=NULL) + xlab("") + ylab("")
+  return(subplot)} 
 
 plot_grid <- function(df){
   unique_cds <- sort(unlist(unique(df['strain'])))
@@ -31,7 +31,7 @@ plot_grid <- function(df){
     column_no <- 0
     for (rbs in unique_rbs){
       column_no <- column_no +1
-      subplot <- plot_growth(df, paste(cds, rbs))
+      subplot <- plot_fluor(df, paste(cds, rbs))
       if (row_no == 1){
         subplot <- subplot + ggtitle(rbs)
       }
@@ -62,7 +62,7 @@ shift_amnt = -3
 df = read.csv("../processed_data/experimental_per_mcherry.csv")
 
 grid <- plot_grid(df)
-ggsave('fluor_grid/per_mch_growth.png', grid, width = 9, height = 9)
+ggsave('fluor_grid/per_mch_fluor.png', grid, width = 9, height = 9)
 
 # -- sfGFP
 gfp_time_start <- 11700 
@@ -73,4 +73,4 @@ shift_amnt = 0
 df = read.csv("../processed_data/experimental_per_gfp.csv")
 
 grid <- plot_grid(df)
-ggsave('fluor_grid/per_gfp_growth.png', grid, width = 9, height = 9)
+ggsave('fluor_grid/per_gfp_fluor.png', grid, width = 9, height = 9)
