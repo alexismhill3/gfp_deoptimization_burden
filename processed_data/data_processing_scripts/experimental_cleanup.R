@@ -75,8 +75,8 @@ for (filename in files){
 # Set target fluorescence depending on strain #tgt_fluor #tgt_expression
 
 master_df<- master_df %>%
-  mutate(tgt_fluor = case_when(groupID %like% "GFP" ~ GFP,
-                               groupID %like% "MCH" ~ mCherry))
+  mutate(tgt_fluor = case_when(groupID %like% "GFP" ~ gfp_norm,
+                               groupID %like% "MCH" ~ mch_norm))
 master_df <- master_df %>%
   mutate(tgt_expression = case_when(groupID %like% "GFP" ~ gfp_expression,
                                     groupID %like% "MCH" ~ mch_expression))
