@@ -76,7 +76,8 @@ df_grid_form <- df_grid %>%
 base_plot <- function() {
   ggplot() +
   scale_y_discrete(expand = expansion(mult = c(0, 0))) +
-  scale_x_discrete(expand = expansion(mult = c(0, 0))) +
+  scale_x_discrete(expand = expansion(mult = c(0, 0)),
+                   labels = c(0.12, 0.25, 0.5, 1, 2, 4, 8)) +
   ylab(expression(K[charge])) +
   xlab(expression(K[speed])) +
   theme_bw() +
@@ -89,14 +90,14 @@ grid_opt <- base_plot() +
   scale_fill_continuous_diverging(palette = "Blue-Red", 
                                   mid = 0.75,
                                   name = expression(T[c]^{opt})) +
-  geom_point(aes(x=3, y=3))
+  geom_point(aes(x=5, y=3))
   
 grid_non_opt <- base_plot() + 
   geom_tile(data=df_grid_form, aes(y = as.factor(charging_rate), x = as.factor(speed), fill = ATA_charged_perc)) +
   scale_fill_continuous_diverging(palette = "Blue-Red", 
                                   mid = 0.75,
                                   name = expression(T[c]^{non-opt})) +
-  geom_point(aes(x=3, y=3))
+  geom_point(aes(x=5, y=3))
 
 
 grid_rib <- base_plot() + 
@@ -104,7 +105,7 @@ grid_rib <- base_plot() +
   scale_fill_continuous_diverging(palette = "Blue-Red", 
                                   mid = 0.15,
                                   name = expression(R[f])) +
-  geom_point(aes(x=3, y=3))
+  geom_point(aes(x=5, y=3))
 
 ```
 
