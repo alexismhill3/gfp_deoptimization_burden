@@ -2,6 +2,7 @@ import pandas as pd
 import openpyxl as xl
 from rich import print
 import numbers
+from math import ceil
 
 well_encoding = {'D5': ['C2', 'GFP10', 'R0.25', 58.39292673207237, 132.10707326792763], 'E5': ['D2', 'GFP10', 'R0.5', 39.67281240902912, 150.82718759097088], 'D11': ['E2', 'GFP10', 'R1', 30.690484031725614, 159.80951596827438], 'B9': ['F2', 'GFP10', 'R2', 49.10091812701321, 141.39908187298678], 'E9': ['G2', 'GFP10', 'R4', 44.44768908128513, 146.05231091871488], 'F11': ['C3', 'GFP25', 'R0.25', 36.493308863019976, 154.00669113698], 'B4': ['D3', 'GFP25', 'R0.5', 32.954747873684944, 157.54525212631506], 'E10': ['E3', 'GFP25', 'R1', 39.20849459684402, 151.29150540315598], 'E11': ['F3', 'GFP25', 'R2', 40.07964534874982, 150.4203546512502], 'E3': ['G3', 'GFP25', 'R4', 34.10500245515704, 156.39499754484297], 'F9': ['C4', 'GFP50', 'R0.25', 43.258807950777, 147.241192049223], 'C5': ['D4', 'GFP50', 'R0.5', 51.641928484514224, 138.8580715154858], 'G5': ['E4', 'GFP50', 'R1', 43.49953395849384, 147.00046604150617], 'D9': ['F4', 'GFP50', 'R2', 36.75066657052645, 153.74933342947355], 'B5': ['G4', 'GFP50', 'R4', 33.56799090262197, 156.93200909737803], 'F4': ['C5', 'GFP75', 'R0.25', 32.119710354124386, 158.38028964587562], 'C10': ['D5', 'GFP75', 'R0.5', 36.12786780033783, 154.37213219966216], 'D8': ['E5', 'GFP75', 'R1', 38.00129590402187, 152.49870409597813], 'D10': ['F5', 'GFP75', 'R2', 36.72189168114442, 153.77810831885557], 'B8': ['G5', 'GFP75', 'R4', 32.977919933963, 157.522080066037], 'F10': ['C6', 'GFP90', 'R0.25', 34.279490079677, 156.220509920323], 'G2': ['D6', 'GFP90', 'R0.5', 34.99567171682602, 155.50432828317398], 'C7': ['E6', 'GFP90', 'R1', 32.931611799991536, 157.56838820000846], 'D4': ['F6', 'GFP90', 'R2', 28.94778434472155, 161.55221565527845], 'D2': ['G6', 'GFP90', 'R4', 32.45308582802544, 158.04691417197455], 'B2': ['blank', 'blank', 'blank', 0, 190.5], 'B3': ['blank', 'blank', 'blank', 0, 190.5], 'B6': ['blank', 'blank', 'blank', 0, 190.5], 'B7': ['blank', 'blank', 'blank', 0, 190.5], 'B10': ['blank', 'blank', 'blank', 0, 190.5], 'B11': ['blank', 'blank', 'blank', 0, 190.5], 'C2': ['blank', 'blank', 'blank', 0, 190.5], 'C3': ['blank', 'blank', 'blank', 0, 190.5], 'C4': ['blank', 'blank', 'blank', 0, 190.5], 'C6': ['blank', 'blank', 'blank', 0, 190.5], 'C8': ['blank', 'blank', 'blank', 0, 190.5], 'C9': ['blank', 'blank', 'blank', 0, 190.5], 'C11': ['blank', 'blank', 'blank', 0, 190.5], 'D3': ['blank', 'blank', 'blank', 0, 190.5], 'D6': ['blank', 'blank', 'blank', 0, 190.5], 'D7': ['blank', 'blank', 'blank', 0, 190.5], 'E2': ['blank', 'blank', 'blank', 0, 190.5], 'E4': ['blank', 'blank', 'blank', 0, 190.5], 'E6': ['blank', 'blank', 'blank', 0, 190.5], 'E7': ['blank', 'blank', 'blank', 0, 190.5], 'E8': ['blank', 'blank', 'blank', 0, 190.5], 'F2': ['blank', 'blank', 'blank', 0, 190.5], 'F3': ['blank', 'blank', 'blank', 0, 190.5], 'F5': ['blank', 'blank', 'blank', 0, 190.5], 'F6': ['blank', 'blank', 'blank', 0, 190.5], 'F7': ['blank', 'blank', 'blank', 0, 190.5], 'F8': ['blank', 'blank', 'blank', 0, 190.5], 'G3': ['blank', 'blank', 'blank', 0, 190.5], 'G4': ['blank', 'blank', 'blank', 0, 190.5], 'G6': ['blank', 'blank', 'blank', 0, 190.5], 'G7': ['blank', 'blank', 'blank', 0, 190.5], 'G8': ['blank', 'blank', 'blank', 0, 190.5], 'G9': ['blank', 'blank', 'blank', 0, 190.5], 'G10': ['blank', 'blank', 'blank', 0, 190.5], 'G11': ['blank', 'blank', 'blank', 0, 190.5]}
 
@@ -53,7 +54,7 @@ def parse_platereader(filename, categories):
             elif well == 'Time [s]':
                 timepoints = row_values[1:]
                 # Round timepoints to nearest second
-                timepoints = [round(timepoint) for timepoint in timepoints if timepoint is not None]
+                timepoints = [ceil(timepoint) for timepoint in timepoints if timepoint is not None]
                 continue
             elif well == 'Temp. [°C]':
                 temperature = row_values[1:]
@@ -77,6 +78,7 @@ def parse_platereader(filename, categories):
 
         continue
 
+    print(sorted(dataframes[2].time.unique()))
     merged_dataframe = pd.concat(dataframes, axis=1)
     merged_dataframe = merged_dataframe.replace('OVER', float('inf'))
     merged_dataframe = merged_dataframe.groupby(by=merged_dataframe.columns, axis=1).apply(lambda g: g.mean(axis=1) if isinstance(g.iloc[0,0], numbers.Number) else g.iloc[:,0]) # https://stackoverflow.com/questions/40311987/pandas-mean-of-columns-with-the-same-names
@@ -90,7 +92,6 @@ def parse_platereader(filename, categories):
     blank_df = blank_df[['time', 'OD660', 'mCherry', 'GFP']]
     blank_df = blank_df.groupby(by='time').mean()
     blank_df = blank_df.reset_index()
-    print(blank_df.head())
 
     # Subtract the blank from the other data
     merged_dataframe = merged_dataframe[merged_dataframe['rbs'] != 'blank']
@@ -109,16 +110,14 @@ def parse_platereader(filename, categories):
 
 
 def main():
-    file = "cr_091324_post.xlsx"
+    file = "cr_091324_post_corrected.xlsx"
 
     categories = ['mCherry', 'GFP', 'OD660']
 
     data = parse_platereader(file, categories)
 
     # write clean data as a csv
-    data[0].to_csv('per2clean.csv', index=False)
-
-    data[0].head()
+    data[0].to_csv('per5clean.csv', index=False)
 
 
 if __name__ == '__main__':

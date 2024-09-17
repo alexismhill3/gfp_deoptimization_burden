@@ -116,7 +116,7 @@ def main():
     data = parse_platereader(file, categories)
 
     # write clean data as a csv
-    data[0].to_csv('per1clean.csv', index=False)
+    data[0].to_csv('sat2clean.csv', index=False)
 
     data[0].head()
 

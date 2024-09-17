@@ -47,21 +47,38 @@ linreg_decent_fixed_b_coef <- function(x_column, y_column, categories) {
 plot_exp_gr <- function(df, coefficients){
   result <- ggplot() +
     geom_point(data= df,
-               aes(x = expression, y = growthrate, color=strain, size=3, group=groupID)) +
-    theme_bw() + ylab("Growth Rate") + xlab("Expression") + scale_color_manual(values=c("#fde725", "#5ec962", "#21918c", '#3b528b', '#440154')) + ylim(0, 0.8) +
-    geom_abline(data=coefficients, aes(intercept=b, slope=m, colour=strain))+theme(axis.text=element_text(size=16), axis.title=element_text(size=20))
+               aes(x = expression,
+                   y = growthrate,
+                   color=strain,
+                   shape=rbs,
+                   size=3,
+                   group=groupID)) +
+    theme_bw() + 
+    ylab("Growth Rate") + 
+    xlab("Expression") + 
+    scale_color_manual(values=c("#fde725", "#5ec962", "#21918c", '#3b528b', '#440154')) + 
+    scale_shape_manual(values = c(15, 16, 17,18, 19)) +
+    ylim(0, 1) +
+    geom_abline(data=coefficients, 
+                aes(intercept=b,
+                    slope=m,
+                    colour=strain))+
+    theme(axis.text=element_text(size=16),
+          axis.title=element_text(size=20))
   return (result)
 }
 
 
 # ------------------- Generate
 # -- mCherry
-mcherry_growth_time <- 11700
-mcherry_fluor_time <- 11700+900*3
+mcherry_growth_time <- 11700+900*-2
+mcherry_fluor_time <- 11700+900*1
 
 df = read.csv("../processed_data/experimental_per_mcherry.csv")
 
 trimmed_df <- trim_df(df, mcherry_growth_time, mcherry_fluor_time)
+trimmed_df <- trimmed_df %>% group_by(strain, rbs) %>% filter(expression == max(expression))
+
 mch_coefficients <- linreg_decent_fixed_b_coef(trimmed_df$expression,
                                    trimmed_df$growthrate,
                                    trimmed_df$strain)
@@ -71,12 +88,15 @@ mch_plot
 ggsave('expr_v_grow/per_mch_growth.png', mch_plot, width = 9, height = 9)
 
 # -- sfGFP
-gfp_growth_time <- 11700 
-gfp_fluor_time <- 11700 
+gfp_growth_time <- 11700+900*-2
+gfp_fluor_time <- 11700+900*-1
 
 df = read.csv("../processed_data/experimental_per_gfp.csv")
 
 trimmed_df <- trim_df(df, gfp_growth_time, gfp_fluor_time)
+trimmed_df <- trimmed_df %>% group_by(strain, rbs) %>% filter(expression == max(expression))
+
+
 gfp_coefficients <- linreg_decent_fixed_b_coef(trimmed_df$expression,
                                                trimmed_df$growthrate,
                                                trimmed_df$strain)
@@ -84,3 +104,20 @@ gfp_plot <- plot_exp_gr(trimmed_df, gfp_coefficients)
 gfp_plot
 
 ggsave('expr_v_grow/per_gfp_growth.png', gfp_plot, width = 9, height = 9)
+
+# -- sfGFP
+gfp_growth_time <- 11700+900*-2
+gfp_fluor_time <- 11700+900*-1
+
+df = read.csv("../processed_data/experimental_sat_gfp.csv")
+
+trimmed_df <- trim_df(df, gfp_growth_time, gfp_fluor_time)
+trimmed_df <- trimmed_df %>% group_by(strain, rbs) %>% filter(expression == max(expression))
+
+gfp_coefficients <- linreg_decent_fixed_b_coef(trimmed_df$expression,
+                                               trimmed_df$growthrate,
+                                               trimmed_df$strain)
+gfp_plot <- plot_exp_gr(trimmed_df, gfp_coefficients)
+gfp_plot
+
+ggsave('expr_v_grow/per_sat_growth.png', gfp_plot, width = 9, height = 9)

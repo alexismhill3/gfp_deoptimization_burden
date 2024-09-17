@@ -36,7 +36,7 @@ plot_grid <- function(df){
         subplot <- subplot + ggtitle(rbs)
       }
       if (column_no == 1){
-        subplot <- subplot + ylab(cds)+ scale_y_continuous(limits = c(0, 16000))
+        subplot <- subplot + ylab(cds)+ scale_y_continuous(limits = c(0, 1))
       }
       if (row_no == length(unique_cds)){  # If == last row
         subplot <- subplot +scale_x_time(breaks = scales::breaks_width("2 hours"), limits=c(0, 900*4*8), labels=label_time(format = "%H")) 
@@ -62,6 +62,7 @@ shift_amnt = -3
 df = read.csv("../processed_data/experimental_per_mcherry.csv")
 
 grid <- plot_grid(df)
+grid
 ggsave('fluor_grid/per_mch_growth.png', grid, width = 9, height = 9)
 
 # -- sfGFP
@@ -73,4 +74,5 @@ shift_amnt = 0
 df = read.csv("../processed_data/experimental_per_gfp.csv")
 
 grid <- plot_grid(df)
+grid
 ggsave('fluor_grid/per_gfp_growth.png', grid, width = 9, height = 9)
