@@ -152,8 +152,8 @@
 <text x='197.87' y='171.38' text-anchor='middle' style='font-size: 16.00px;fill: #4D4D4D; font-family: "Noto Sans";' textLength='9.15px' lengthAdjust='spacingAndGlyphs'>3</text>
 <text x='235.44' y='171.38' text-anchor='middle' style='font-size: 16.00px;fill: #4D4D4D; font-family: "Noto Sans";' textLength='9.15px' lengthAdjust='spacingAndGlyphs'>4</text>
 <text x='161.98' y='189.40' text-anchor='middle' style='font-size: 16.00px; font-family: "Noto Sans";' textLength='145.14px' lengthAdjust='spacingAndGlyphs'>Relative Expression</text>
-<text x='161.98' y='206.68' text-anchor='middle' style='font-size: 16.00px; font-family: "Noto Sans";' textLength='174.44px' lengthAdjust='spacingAndGlyphs'>(ΔGFS/mean(OD600)/h)</text>
+<text x='161.98' y='206.68' text-anchor='middle' style='font-size: 16.00px; font-family: "Noto Sans";' textLength='174.44px' lengthAdjust='spacingAndGlyphs'>(ΔGFS/mean(OD660)/h)</text>
 <text transform='translate(16.91,80.25) rotate(-90)' text-anchor='middle' style='font-size: 16.00px; font-family: "Noto Sans";' textLength='94.06px' lengthAdjust='spacingAndGlyphs'>Growth Rate</text>
-<text transform='translate(34.19,80.25) rotate(-90)' text-anchor='middle' style='font-size: 16.00px; font-family: "Noto Sans";' textLength='110.92px' lengthAdjust='spacingAndGlyphs'>(Δln(OD600)/h)</text>
+<text transform='translate(34.19,80.25) rotate(-90)' text-anchor='middle' style='font-size: 16.00px; font-family: "Noto Sans";' textLength='110.92px' lengthAdjust='spacingAndGlyphs'>(Δln(OD660)/h)</text>
 </g>
 </svg>
