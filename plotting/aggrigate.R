@@ -48,10 +48,10 @@ graph_strain_grey<- function(strain_dataframe_master, strain_name, t1, t2, shift
 window_size = 3
 
 # -- mCherry
-mch_time_start <- 11700
+mch_time_start <- 11700+900*-2
 t1 = mch_time_start-900*window_size
 t3 = mch_time_start
-shift_amnt = -3
+shift_amnt = -2
 
 df = read.csv("../processed_data/experimental_per_mcherry.csv")
 

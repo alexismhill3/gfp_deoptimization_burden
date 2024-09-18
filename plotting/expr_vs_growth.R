@@ -7,6 +7,8 @@ library(data.table)
 library(zoo)
 library(tidyverse)
 library(scales)
+library(extrafont)
+font_import(pattern="arial.ttf", prompt=FALSE)
 
 # -------------- Trim Dataframe
 
@@ -44,7 +46,7 @@ linreg_decent_fixed_b_coef <- function(x_column, y_column, categories) {
 
 
 # ----------------- Plot logic
-plot_exp_gr <- function(df, coefficients){
+plot_exp_gr <- function(df, coefficients, xtitle){
   result <- ggplot() +
     geom_point(data= df,
                aes(x = expression,
@@ -53,11 +55,13 @@ plot_exp_gr <- function(df, coefficients){
                    shape=rbs,
                    size=3,
                    group=groupID)) +
-    theme_bw() + 
-    ylab("Growth Rate") + 
-    xlab("Expression") + 
+    theme_bw() + theme(text = element_text(size = 16, family="Arial MS"), legend.position="none",
+                       axis.title.x = element_text(size = 16, family="Arial MS"),
+                       axis.title.y = element_text(size = 16, family="Arial MS")) +
+    ylab("Growth Rate\n(Δln(OD600)/h)") + 
+    xlab(xtitle) + 
     scale_color_manual(values=c("#fde725", "#5ec962", "#21918c", '#3b528b', '#440154')) + 
-    scale_shape_manual(values = c(15, 16, 17,18, 19)) +
+    scale_shape_manual(values = c("\u25FC", "\u2B24", "\u25B2","\u2666", "\u2605")) +
     ylim(0, 1) +
     geom_abline(data=coefficients, 
                 aes(intercept=b,
@@ -71,45 +75,77 @@ plot_exp_gr <- function(df, coefficients){
 
 # ------------------- Generate
 # -- mCherry
-mcherry_growth_time <- 11700+900*-2
-mcherry_fluor_time <- 11700+900*1
+global_growth_time = 11700+900*-2
+
+mcherry_growth_time <- global_growth_time
+mcherry_fluor_time <- global_growth_time+900*3
 
 df = read.csv("../processed_data/experimental_per_mcherry.csv")
+
+trimmed_df <- trim_df(df, mcherry_growth_time, mcherry_fluor_time)
+
+mch_coefficients <- linreg_decent_fixed_b_coef(trimmed_df$expression,
+                                   trimmed_df$growthrate,
+                                   trimmed_df$strain)
+mch_plot <- plot_exp_gr(trimmed_df, mch_coefficients, "Relative Expression\n(ΔRFS/mean(OD600)/h)")
+mch_plot
+
+ggsave('expr_v_grow/per_mch_growth_unfiltered.svg', mch_plot, width = 3.5, height = 3)
 
 trimmed_df <- trim_df(df, mcherry_growth_time, mcherry_fluor_time)
 trimmed_df <- trimmed_df %>% group_by(strain, rbs) %>% filter(expression == max(expression))
 
 mch_coefficients <- linreg_decent_fixed_b_coef(trimmed_df$expression,
-                                   trimmed_df$growthrate,
-                                   trimmed_df$strain)
-mch_plot <- plot_exp_gr(trimmed_df, mch_coefficients)
+                                               trimmed_df$growthrate,
+                                               trimmed_df$strain)
+mch_plot <- plot_exp_gr(trimmed_df, mch_coefficients, "Relative Expression\n(ΔRFS/mean(OD600)/h)")
 mch_plot
 
-ggsave('expr_v_grow/per_mch_growth.png', mch_plot, width = 9, height = 9)
+ggsave('expr_v_grow/per_mch_growth.svg', mch_plot, width = 3.5, height = 3)
 
-# -- sfGFP
-gfp_growth_time <- 11700+900*-2
-gfp_fluor_time <- 11700+900*-1
+# -- sfGFP percent based
+gfp_growth_time <- global_growth_time
+gfp_fluor_time <- global_growth_time+900*0
 
 df = read.csv("../processed_data/experimental_per_gfp.csv")
 
 trimmed_df <- trim_df(df, gfp_growth_time, gfp_fluor_time)
+
+gfp_coefficients <- linreg_decent_fixed_b_coef(trimmed_df$expression,
+                                               trimmed_df$growthrate,
+                                               trimmed_df$strain)
+gfp_plot <- plot_exp_gr(trimmed_df, gfp_coefficients, "Relative Expression\n(ΔGFS/mean(OD600)/h)")
+gfp_plot
+
+ggsave('expr_v_grow/per_gfp_growth_unfiltered.svg', gfp_plot, width = 3.5, height = 3)
+
+
 trimmed_df <- trimmed_df %>% group_by(strain, rbs) %>% filter(expression == max(expression))
 
 
 gfp_coefficients <- linreg_decent_fixed_b_coef(trimmed_df$expression,
                                                trimmed_df$growthrate,
                                                trimmed_df$strain)
-gfp_plot <- plot_exp_gr(trimmed_df, gfp_coefficients)
+gfp_plot <- plot_exp_gr(trimmed_df, gfp_coefficients, "Relative Expression\n(ΔGFS/mean(OD600)/h)")
 gfp_plot
 
-ggsave('expr_v_grow/per_gfp_growth.png', gfp_plot, width = 9, height = 9)
+ggsave('expr_v_grow/per_gfp_growth.svg', gfp_plot, width = 3.5, height = 3)
 
-# -- sfGFP
-gfp_growth_time <- 11700+900*-2
-gfp_fluor_time <- 11700+900*-1
+# -- sfGFP sat based
+gfp_growth_time <- global_growth_time
+gfp_fluor_time <- global_growth_time+900*0
 
 df = read.csv("../processed_data/experimental_sat_gfp.csv")
+
+
+trimmed_df <- trim_df(df, gfp_growth_time, gfp_fluor_time)
+gfp_coefficients <- linreg_decent_fixed_b_coef(trimmed_df$expression,
+                                               trimmed_df$growthrate,
+                                               trimmed_df$strain)
+gfp_plot <- plot_exp_gr(trimmed_df, gfp_coefficients, "Relative Expression\n(ΔGFS/mean(OD600)/h)")
+gfp_plot
+
+ggsave('expr_v_grow/sat_gfp_growth_unfiltered.svg', gfp_plot, width = 3.5, height = 3)
 
 trimmed_df <- trim_df(df, gfp_growth_time, gfp_fluor_time)
 trimmed_df <- trimmed_df %>% group_by(strain, rbs) %>% filter(expression == max(expression))
@@ -117,7 +153,7 @@ trimmed_df <- trimmed_df %>% group_by(strain, rbs) %>% filter(expression == max(
 gfp_coefficients <- linreg_decent_fixed_b_coef(trimmed_df$expression,
                                                trimmed_df$growthrate,
                                                trimmed_df$strain)
-gfp_plot <- plot_exp_gr(trimmed_df, gfp_coefficients)
+gfp_plot <- plot_exp_gr(trimmed_df, gfp_coefficients, "Relative Expression\n(ΔGFS/mean(OD600)/h)")
 gfp_plot
 
-ggsave('expr_v_grow/per_sat_growth.png', gfp_plot, width = 9, height = 9)
+ggsave('expr_v_grow/sat_gfp_growth.svg', gfp_plot, width = 3.5, height = 3)
