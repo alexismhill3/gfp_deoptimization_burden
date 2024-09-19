@@ -81,7 +81,7 @@ gfp_fluor_time <- global_growth_time+900*0
 
 trimmed_df <- trim_df(df_gfp_sat, gfp_growth_time, gfp_fluor_time)
 
-gfp_plot_sat <- day_violin(trimmed_df, "sfGFP Percent Otimized")
+gfp_plot_sat <- day_violin(trimmed_df, "sfGFP Sat Otimized")
 gfp_plot_sat
 
 #ggsave('expr_v_grow/sat_gfp_growth.svg', gfp_plot, width = 3.5, height = 3)
