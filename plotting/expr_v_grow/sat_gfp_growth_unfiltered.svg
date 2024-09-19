@@ -34,20 +34,17 @@
 <polyline points='77.45,97.25 246.52,97.25 ' style='stroke-width: 0.53; stroke: #EBEBEB; stroke-linecap: butt;' />
 <polyline points='77.45,63.26 246.52,63.26 ' style='stroke-width: 0.53; stroke: #EBEBEB; stroke-linecap: butt;' />
 <polyline points='77.45,29.27 246.52,29.27 ' style='stroke-width: 0.53; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='103.94,155.03 103.94,5.48 ' style='stroke-width: 0.53; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='141.51,155.03 141.51,5.48 ' style='stroke-width: 0.53; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='179.08,155.03 179.08,5.48 ' style='stroke-width: 0.53; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='216.65,155.03 216.65,5.48 ' style='stroke-width: 0.53; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='114.33,155.03 114.33,5.48 ' style='stroke-width: 0.53; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='172.66,155.03 172.66,5.48 ' style='stroke-width: 0.53; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='231.00,155.03 231.00,5.48 ' style='stroke-width: 0.53; stroke: #EBEBEB; stroke-linecap: butt;' />
 <polyline points='77.45,148.23 246.52,148.23 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
 <polyline points='77.45,114.24 246.52,114.24 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
 <polyline points='77.45,80.25 246.52,80.25 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
 <polyline points='77.45,46.27 246.52,46.27 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
 <polyline points='77.45,12.28 246.52,12.28 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
 <polyline points='85.16,155.03 85.16,5.48 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='122.73,155.03 122.73,5.48 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='160.30,155.03 160.30,5.48 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='197.87,155.03 197.87,5.48 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='235.44,155.03 235.44,5.48 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='143.50,155.03 143.50,5.48 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='201.83,155.03 201.83,5.48 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
 <text x='93.04' y='41.09' text-anchor='middle' style='font-size: 13.85px;fill: #FDE725; font-family: "Arial";' textLength='8.31px' lengthAdjust='spacingAndGlyphs'>◼</text>
 <text x='153.28' y='69.78' text-anchor='middle' style='font-size: 13.85px;fill: #FDE725; font-family: "Arial";' textLength='8.31px' lengthAdjust='spacingAndGlyphs'>⬤</text>
 <text x='92.71' y='32.32' text-anchor='middle' style='font-size: 13.85px;fill: #FDE725; font-family: "Arial";' textLength='8.31px' lengthAdjust='spacingAndGlyphs'>▲</text>
@@ -142,15 +139,11 @@
 <polyline points='74.71,46.27 77.45,46.27 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
 <polyline points='74.71,12.28 77.45,12.28 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
 <polyline points='85.16,157.77 85.16,155.03 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
-<polyline points='122.73,157.77 122.73,155.03 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
-<polyline points='160.30,157.77 160.30,155.03 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
-<polyline points='197.87,157.77 197.87,155.03 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
-<polyline points='235.44,157.77 235.44,155.03 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
+<polyline points='143.50,157.77 143.50,155.03 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
+<polyline points='201.83,157.77 201.83,155.03 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
 <text x='85.16' y='171.38' text-anchor='middle' style='font-size: 16.00px;fill: #4D4D4D; font-family: "Noto Sans";' textLength='9.15px' lengthAdjust='spacingAndGlyphs'>0</text>
-<text x='122.73' y='171.38' text-anchor='middle' style='font-size: 16.00px;fill: #4D4D4D; font-family: "Noto Sans";' textLength='9.15px' lengthAdjust='spacingAndGlyphs'>1</text>
-<text x='160.30' y='171.38' text-anchor='middle' style='font-size: 16.00px;fill: #4D4D4D; font-family: "Noto Sans";' textLength='9.15px' lengthAdjust='spacingAndGlyphs'>2</text>
-<text x='197.87' y='171.38' text-anchor='middle' style='font-size: 16.00px;fill: #4D4D4D; font-family: "Noto Sans";' textLength='9.15px' lengthAdjust='spacingAndGlyphs'>3</text>
-<text x='235.44' y='171.38' text-anchor='middle' style='font-size: 16.00px;fill: #4D4D4D; font-family: "Noto Sans";' textLength='9.15px' lengthAdjust='spacingAndGlyphs'>4</text>
+<text x='143.50' y='171.38' text-anchor='middle' style='font-size: 16.00px;fill: #4D4D4D; font-family: "Noto Sans";' textLength='9.15px' lengthAdjust='spacingAndGlyphs'>5</text>
+<text x='201.83' y='171.38' text-anchor='middle' style='font-size: 16.00px;fill: #4D4D4D; font-family: "Noto Sans";' textLength='18.30px' lengthAdjust='spacingAndGlyphs'>10</text>
 <text x='161.98' y='189.40' text-anchor='middle' style='font-size: 16.00px; font-family: "Noto Sans";' textLength='145.14px' lengthAdjust='spacingAndGlyphs'>Relative Expression</text>
 <text x='161.98' y='206.68' text-anchor='middle' style='font-size: 16.00px; font-family: "Noto Sans";' textLength='174.44px' lengthAdjust='spacingAndGlyphs'>(ΔGFS/mean(OD660)/h)</text>
 <text transform='translate(16.91,80.25) rotate(-90)' text-anchor='middle' style='font-size: 16.00px; font-family: "Noto Sans";' textLength='94.06px' lengthAdjust='spacingAndGlyphs'>Growth Rate</text>

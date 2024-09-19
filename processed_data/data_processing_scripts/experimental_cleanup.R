@@ -86,6 +86,18 @@ for (filename in files){
   master_df = rbind(master_df, processed_data)
 }
 
+# Normalize fluorescence to maximum appearant fluorescence for each fluorophore
+max_gfp <- max(master_df$GFP)
+master_df$GFP <- master_df$GFP/max_gfp*10
+master_df$gfp_norm <- master_df$gfp_norm/max_gfp*10
+master_df$gfp_expression <- master_df$gfp_expression/max_gfp*10
+
+max_mch <- max(master_df$mCherry)
+master_df$mCherry <- master_df$mCherry/max_mch*10
+master_df$mch_norm <- master_df$mch_norm/max_mch*10
+master_df$mch_expression <- master_df$mch_expression/max_mch*10
+
+
 # Set target fluorescence depending on strain #tgt_fluor #tgt_expression
 
 master_df<- master_df %>%
