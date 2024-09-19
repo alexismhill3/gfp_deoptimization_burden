@@ -51,7 +51,7 @@ df_prot_cal %>% filter(species == "cellularProtein") %>%
         legend.position=c(.1,.7),
         legend.margin=margin(c(5,10,15,10)),
         legend.box.background = element_rect(color = "grey"))
-ggsave("fig/cellular_baseline_speed_3.png", width = 7, height = 4)
+ggsave("fig/cellular_baseline_speed_3.png", width = 6, height = 4.6)
 ```
 Supp. figure of grid search for reasonable parameters (kcharge, kspeed) for gfp simulations
 
