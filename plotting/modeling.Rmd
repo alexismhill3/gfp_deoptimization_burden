@@ -33,7 +33,7 @@ df_prot_cal <- read_csv("../processed_data/calibrate_single_population_charging_
 ```{r}
 df_prot_cal %>% filter(species == "cellularProtein") %>% 
   ggplot(aes(x = ecol_comp, y = protein, color = charging_rate, group = charging_rate, alpha = charging_rate != 250.0)) +
-  geom_vline(xintercept=0.7, color="grey70", linewidth=2, alpha=0.5) +
+  geom_vline(xintercept=0.7, color="grey70", linewidth=2, alpha=0.5, linetype="dashed") +
   geom_line(linewidth = 2) +
   scale_color_distiller(trans = "log10", 
                      palette = "Blues",
@@ -151,7 +151,7 @@ gfp_plot <- df_skew %>% filter(charging_rate == 100, ecol %in% c(0.6, 0.8, 1.0),
     geom_smooth(method = "lm", se = FALSE, formula = y ~ x + 1, fullrange=TRUE) +
     facet_wrap(~ecol, labeller = label_bquote(f[opt] ^ cell == .(ecol))) +
     xlab("GFP") +
-    ylab("cellular protein") +
+    ylab("cell protein") +
     scale_y_continuous(limits = c(0.6, 1)) +
     scale_x_continuous(breaks= c(0, 2500, 5000, 7500),
     #                   labels = c(expression(2.5*"x"*10^{3}), 
@@ -174,6 +174,7 @@ base_plot <- function (data) {
   #geom_smooth(se = FALSE, color="black") +
   #geom_point() +
   geom_line(linewidth = 1.25) +
+  geom_vline(xintercept = 0.7, alpha=0.5, linewidth=1.25, linetype="dashed") +
   scale_x_continuous(name = expression(f[opt]),
                          breaks = c(0, 0.25, 0.5, 0.75, 1),
                          labels = c("0", "0.25", "0.5", "0.75", "1")) +
@@ -231,7 +232,7 @@ opt_plot <- cowplot::plot_grid(p1, p2, p3, nrow = 1, rel_widths = c(1, 1, 1))
 
 ```{r}
 legend <- get_legend(gfp_plot)
-p1 <- cowplot::plot_grid(gfp_plot + theme(legend.position = "none"), opt_plot, ncol = 1, align = 'v')
+p1 <- cowplot::plot_grid(gfp_plot + theme(legend.position = "none"), opt_plot, ncol = 1, align = 'v', labels = c("A", "B"))
 cowplot::plot_grid(p1, legend, rel_widths = c(1, 0.2))
 ggsave("fig/gfp_experiment_cell_fopt_6_8_10.png", width = 7, height = 4)
 ```
