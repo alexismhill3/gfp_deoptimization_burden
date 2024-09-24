@@ -28,7 +28,7 @@ pre_data$pre_fluor <-   case_when(
                                "MCH50",
                                "MCH75",
                                "MCH90") ~ pre_data$mch_norm)
-pre_data <- pre_data %>% filter(time == max(pre_data$time))
+pre_data <- pre_data %>% filter(time == 0)
 
 pre_data <- pre_data %>% select(pre_fluor, rbs, cds, experiment)
 colnames(pre_data)[colnames(pre_data) == 'cds'] <- 'strain'
@@ -49,7 +49,7 @@ trim_df <- function(df, grow_time, output_time){
 # ---------Plot logic
 
 plot <- function(df){
-  result <- ggplot() + geom_point(data = df, aes(x=pre_fluor, y=expression, color=strain, shape=rbs)) + theme_bw()
+  result <- ggplot() + geom_point(data = df, aes(x=pre_fluor, y=expression, color=strain, shape=rbs)) + theme_bw() + expand_limits(x=0)
   
   return (result)
 }

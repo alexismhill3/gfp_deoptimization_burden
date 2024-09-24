@@ -39,7 +39,6 @@ linreg_decent_set_b_coef <- function(x_column, y_column, categories) {
   regression <- linreg_decent_set_b(x_column, y_column, categories)
   regression$coef <- lapply(regression$model, coef)
   regression <- unnest_wider(regression, coef)
-  print(regression)
   
   coefficients <- data.frame(b=set_intersept,
                              m=regression$x,
@@ -72,6 +71,7 @@ linreg_decent_variable_b <- function(x_column, y_column, categories) {
 }
 linreg_decent_variable_b_coef <- function(x_column, y_column, categories) {
   regression <- linreg_decent_variable_b(x_column, y_column, categories)
+  
   regression$coef <- lapply(regression$model, coef)
   regression <- unnest_wider(regression, coef)
   
@@ -111,6 +111,24 @@ plot_exp_gr <- function(df, coefficients, xtitle){
   return (result)
 }
 
+plot_slopes <- function(x_column, y_column, categories){
+  coefficients <- linreg_decent_set_b_coef(x_column, y_column, categories)
+  model <- linreg_decent_set_b(x_column, y_column, categories)
+  model$coef <- lapply(model$model, coef)
+  model <- unnest_wider(model, coef)
+  model$b <- set_intersept
+  model$stderr <- lapply(model$model, function(mo) {summary(mo)$coefficients[, "Std. Error"]})
+  model <- unnest(model, stderr)
+  colnames(model)[colnames(model) == 'x'] <- 'm'
+  plot <- ggplot(model, aes(x=species, y=abs(m), fill=species)) +
+    geom_bar(stat = "identity") + theme_bw() +    
+    geom_errorbar(aes(x=species, ymin=abs(m)-stderr, ymax=abs(m)+stderr)) +
+    scale_fill_manual(values=c( "#fde725", "#5ec962", "#21918c", '#3b528b', '#440154')) +
+    theme_bw() + theme(text = element_text(size = 16, family="Arial MS"), legend.position="none",
+                       axis.title.x = element_text(size = 16, family="Arial MS"),
+                       axis.title.y = element_text(size = 16, family="Arial MS"))
+  
+  return (plot)}
 
 # ------------------- Generate
 df_mch_per = read.csv("../processed_data/experimental_per_mcherry.csv")
@@ -135,6 +153,7 @@ mcherry_fluor_time <- global_growth_time+900*2
 
 trimmed_df <- trim_df(df_mch_per, mcherry_growth_time, mcherry_fluor_time)
 trimmed_filtered_df <- trimmed_df %>% filter(expression > mch_cutoff)
+trimmed_filtered_df <- trimmed_filtered_df %>% filter(!(strain == "MCH90"))
 
 
 mch_coefficients <- regression_function(trimmed_filtered_df$expression,
@@ -142,6 +161,10 @@ mch_coefficients <- regression_function(trimmed_filtered_df$expression,
                                    trimmed_filtered_df$strain)
 mch_plot <- plot_exp_gr(trimmed_df, mch_coefficients, "Relative Expression\n(ΔRFS/mean(OD660)/h)")
 mch_plot
+
+mch_per_slopes <- plot_slopes(trimmed_filtered_df$expression,
+                              trimmed_filtered_df$growthrate,
+                              trimmed_filtered_df$strain)
 
 ggsave('expr_v_grow/per_mch_growth.svg', mch_plot, width = 3.5, height = 3)
 
@@ -160,6 +183,11 @@ gfp_coefficients <- regression_function(trimmed_filtered_df$expression,
 gfp_plot_per <- plot_exp_gr(trimmed_df, gfp_coefficients, "Relative Expression\n(ΔGFS/mean(OD660)/h)")
 gfp_plot_per
 
+gfp_per_slopes <- plot_slopes(trimmed_filtered_df$expression,
+                              trimmed_filtered_df$growthrate,
+                              trimmed_filtered_df$strain)
+
+
 ggsave('expr_v_grow/per_gfp_growth.svg', gfp_plot_per, width = 3.5, height = 3)
 
 
@@ -177,7 +205,12 @@ gfp_coefficients <- regression_function(trimmed_filtered_df$expression,
 gfp_plot_sat <- plot_exp_gr(trimmed_df, gfp_coefficients, "Relative Expression\n(ΔGFS/mean(OD660)/h)")
 gfp_plot_sat
 
+gfp_sat_slopes <- plot_slopes(trimmed_filtered_df$expression,
+                              trimmed_filtered_df$growthrate,
+                              trimmed_filtered_df$strain)
+
 ggsave('expr_v_grow/sat_gfp_growth.svg', gfp_plot_sat, width = 3.5, height = 3)
 
 
 mch_plot + gfp_plot_per + gfp_plot_sat
+mch_per_slopes + gfp_per_slopes + gfp_sat_slopes
