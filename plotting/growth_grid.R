@@ -76,3 +76,9 @@ df = read.csv("../processed_data/experimental_per_gfp.csv")
 grid <- plot_grid(df)
 grid
 ggsave('fluor_grid/per_gfp_growth.png', grid, width = 9, height = 9)
+
+df = read.csv("../processed_data/experimental_sat_gfp.csv")
+
+grid <- plot_grid(df)
+grid
+ggsave('fluor_grid/sat_gfp_growth.png', grid, width = 9, height = 9)

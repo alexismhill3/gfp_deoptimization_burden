@@ -12,7 +12,7 @@ library(scales)
 plot_fluor <- function(df, strain_name, maxy){
   filtered_master <- df %>% filter(groupID %like% strain_name)
   subplot <- ggplot() + 
-    geom_line(data=filtered_master, aes(x = time, y = fluor, group=groupID, alpha = 0.05)) +
+    geom_line(data=filtered_master, aes(x = time, y = fluor, group=interaction(groupID, well), alpha = 0.05)) +
     scale_x_time(breaks = scales::breaks_width("2 hours"), labels=NULL, limits=c(0, 900*4*8)) +
     geom_vline(xintercept=t1-900*shift_amnt, linetype='dashed') +
     geom_vline(xintercept=t3-900*shift_amnt, linetype='dashed') + theme_bw() +
@@ -73,7 +73,7 @@ t1 = gfp_time_start-900*window_size
 t3 = gfp_time_start
 shift_amnt = 0
 
-maxy = 10
+maxy = 15
 
 df = read.csv("../processed_data/experimental_per_gfp.csv")
 
@@ -88,10 +88,10 @@ t1 = gfp_time_start-900*window_size
 t3 = gfp_time_start
 shift_amnt = 0
 
-maxy = 80000
+maxy = 15
 
 df = read.csv("../processed_data/experimental_sat_gfp.csv")
 
 grid <- plot_grid(df, maxy)
 grid
-ggsave('fluor_grid/per_gfp_fluor.png', grid, width = 9, height = 9)
+ggsave('fluor_grid/sat_gfp_fluor.png', grid, width = 9, height = 9)

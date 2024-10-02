@@ -85,7 +85,7 @@ linreg_decent_variable_b_coef <- function(x_column, y_column, categories) {
 
 
 # ----------------- Plot logic
-plot_exp_gr <- function(df, coefficients, xtitle){
+plot_exp_gr <- function(df, coefficients, xtitle, colors){
   result <- ggplot() +
     geom_point(data= df,
                aes(x = expression,
@@ -99,7 +99,7 @@ plot_exp_gr <- function(df, coefficients, xtitle){
                        axis.title.y = element_text(size = 16, family="Arial MS")) +
     ylab("Growth Rate\n(Δln(OD660)/h)") + 
     xlab(xtitle) + 
-    scale_color_manual(values=c("#fde725", "#5ec962", "#21918c", '#3b528b', '#440154')) + 
+    scale_color_manual(values=colors) + 
     scale_shape_manual(values = c("\u25FC", "\u2B24", "\u25B2","\u2666", "\u2605")) +
     ylim(0, 1) +
     geom_abline(data=coefficients, 
@@ -111,7 +111,7 @@ plot_exp_gr <- function(df, coefficients, xtitle){
   return (result)
 }
 
-plot_slopes <- function(x_column, y_column, categories){
+plot_slopes <- function(x_column, y_column, categories, colors){
   coefficients <- linreg_decent_set_b_coef(x_column, y_column, categories)
   model <- linreg_decent_set_b(x_column, y_column, categories)
   model$coef <- lapply(model$model, coef)
@@ -123,7 +123,7 @@ plot_slopes <- function(x_column, y_column, categories){
   plot <- ggplot(model, aes(x=species, y=abs(m), fill=species)) +
     geom_bar(stat = "identity") + theme_bw() +    
     geom_errorbar(aes(x=species, ymin=abs(m)-stderr, ymax=abs(m)+stderr)) +
-    scale_fill_manual(values=c( "#fde725", "#5ec962", "#21918c", '#3b528b', '#440154')) +
+    scale_fill_manual(values=colors) +
     theme_bw() + theme(text = element_text(size = 16, family="Arial MS"), legend.position="none",
                        axis.title.x = element_text(size = 16, family="Arial MS"),
                        axis.title.y = element_text(size = 16, family="Arial MS"),
@@ -149,7 +149,7 @@ gfp_cutoff <- max(max(df_gfp_per $expression, na.rm = TRUE), max(df_gfp_sat$expr
 
 # -- mCherry
 global_growth_time = 11700+900*-2
-
+colors = c("#fde725", "#5ec962", "#21918c", '#3b528b', '#440154')
 
 mcherry_growth_time <- global_growth_time
 mcherry_fluor_time <- global_growth_time+900*2
@@ -162,12 +162,12 @@ trimmed_filtered_df <- trimmed_df %>% filter(expression > mch_cutoff)
 mch_coefficients <- regression_function(trimmed_filtered_df$expression,
                                    trimmed_filtered_df$growthrate,
                                    trimmed_filtered_df$strain)
-mch_plot <- plot_exp_gr(trimmed_filtered_df, mch_coefficients, "Relative Expression\n(ΔRFS/mean(OD660)/h)")
+mch_plot <- plot_exp_gr(trimmed_filtered_df, mch_coefficients, "Relative Expression\n(ΔRFS/mean(OD660)/h)", colors)
 mch_plot
 
 mch_per_slopes <- plot_slopes(trimmed_filtered_df$expression,
                               trimmed_filtered_df$growthrate,
-                              trimmed_filtered_df$strain)
+                              trimmed_filtered_df$strain, colors)
 
 ggsave('expr_v_grow/per_mch_growth.svg', mch_plot, width = 3.5, height = 3)
 
@@ -175,6 +175,7 @@ ggsave('expr_v_grow/per_mch_growth.svg', mch_plot, width = 3.5, height = 3)
 # -- sfGFP percent based
 gfp_growth_time <- global_growth_time
 gfp_fluor_time <- global_growth_time+900*0
+colors = c("#fde725", "#5ec962", "#21918c", '#3b528b', '#440154')
 
 trimmed_df <- trim_df(df_gfp_per, gfp_growth_time, gfp_fluor_time)
 trimmed_filtered_df <- trimmed_df %>% filter(expression > gfp_cutoff)
@@ -183,18 +184,19 @@ trimmed_filtered_df <- trimmed_df %>% filter(expression > gfp_cutoff)
 gfp_coefficients <- regression_function(trimmed_filtered_df$expression,
                                                trimmed_filtered_df$growthrate,
                                                trimmed_filtered_df$strain)
-gfp_plot_per <- plot_exp_gr(trimmed_filtered_df, gfp_coefficients, "Relative Expression\n(ΔGFS/mean(OD660)/h)")
+gfp_plot_per <- plot_exp_gr(trimmed_filtered_df, gfp_coefficients, "Relative Expression\n(ΔGFS/mean(OD660)/h)", colors)
 gfp_plot_per
 
 gfp_per_slopes <- plot_slopes(trimmed_filtered_df$expression,
                               trimmed_filtered_df$growthrate,
-                              trimmed_filtered_df$strain)
+                              trimmed_filtered_df$strain, colors)
 
 
 ggsave('expr_v_grow/per_gfp_growth.svg', gfp_plot_per, width = 3.5, height = 3)
 
 
 # -- sfGFP sat based
+colors = c("#E69F00", "#56B4E9", "#009E73", '#F0E442', '#0072B2')
 gfp_growth_time <- global_growth_time
 gfp_fluor_time <- global_growth_time+900*0
 
@@ -205,12 +207,12 @@ trimmed_filtered_df <- trimmed_df %>% filter(expression > gfp_cutoff)
 gfp_coefficients <- regression_function(trimmed_filtered_df$expression,
                                                trimmed_filtered_df$growthrate,
                                                trimmed_filtered_df$strain)
-gfp_plot_sat <- plot_exp_gr(trimmed_filtered_df, gfp_coefficients, "Relative Expression\n(ΔGFS/mean(OD660)/h)")
+gfp_plot_sat <- plot_exp_gr(trimmed_filtered_df, gfp_coefficients, "Relative Expression\n(ΔGFS/mean(OD660)/h)", colors)
 gfp_plot_sat
 
 gfp_sat_slopes <- plot_slopes(trimmed_filtered_df$expression,
                               trimmed_filtered_df$growthrate,
-                              trimmed_filtered_df$strain)
+                              trimmed_filtered_df$strain, colors)
 
 ggsave('expr_v_grow/sat_gfp_growth.svg', gfp_plot_sat, width = 3.5, height = 3)
 
@@ -218,6 +220,6 @@ ggsave('expr_v_grow/sat_gfp_growth.svg', gfp_plot_sat, width = 3.5, height = 3)
 mch_plot + gfp_plot_per + gfp_plot_sat
 mch_per_slopes + gfp_per_slopes + gfp_sat_slopes
 
-ggsave('expr_v_grow/sat_gfp_slopes.svg', gfp_plot_sat, width = 3.5, height = 3)
+ggsave('expr_v_grow/sat_gfp_slopes.svg', gfp_sat_slopes, width = 3.5, height = 3)
 ggsave('expr_v_grow/per_mch_slopes.svg', mch_per_slopes, width = 3.5, height = 3)
 ggsave('expr_v_grow/per_gfp_slopes.svg', gfp_per_slopes, width = 3.5, height = 3)
