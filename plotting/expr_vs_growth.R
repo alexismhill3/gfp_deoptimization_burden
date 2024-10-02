@@ -92,7 +92,7 @@ plot_exp_gr <- function(df, coefficients, xtitle){
                    y = growthrate,
                    color=strain,
                    shape=rbs,
-                   size=3,
+                   size=3, alpha=0.9,
                    group=groupID)) +
     theme_bw() + theme(text = element_text(size = 16, family="Arial MS"), legend.position="none",
                        axis.title.x = element_text(size = 16, family="Arial MS"),
@@ -107,7 +107,7 @@ plot_exp_gr <- function(df, coefficients, xtitle){
                     slope=m,
                     colour=strain))+
     theme(axis.text=element_text(size=16),
-          axis.title=element_text(size=20))
+          axis.title=element_text(size=20))  + expand_limits(x = 0, y = 0)
   return (result)
 }
 
@@ -126,7 +126,10 @@ plot_slopes <- function(x_column, y_column, categories){
     scale_fill_manual(values=c( "#fde725", "#5ec962", "#21918c", '#3b528b', '#440154')) +
     theme_bw() + theme(text = element_text(size = 16, family="Arial MS"), legend.position="none",
                        axis.title.x = element_text(size = 16, family="Arial MS"),
-                       axis.title.y = element_text(size = 16, family="Arial MS"))
+                       axis.title.y = element_text(size = 16, family="Arial MS"),
+                       axis.text.x = element_text(angle = 90,, size = 16, family="Arial MS")
+                       ) +
+    xlab("CDS") + ylab("abs(slope)")    
   
   return (plot)}
 
@@ -136,7 +139,7 @@ df_gfp_per = read.csv("../processed_data/experimental_per_gfp.csv")
 df_gfp_sat = read.csv("../processed_data/experimental_sat_gfp.csv")
 
 
-cutoff_percent <- 0.1
+cutoff_percent <- 0.10
 #regression_function <- linreg_decent_variable_b_coef
 regression_function <- linreg_decent_fixed_b_coef
 #regression_function <- linreg_decent_set_b_coef
@@ -153,13 +156,13 @@ mcherry_fluor_time <- global_growth_time+900*2
 
 trimmed_df <- trim_df(df_mch_per, mcherry_growth_time, mcherry_fluor_time)
 trimmed_filtered_df <- trimmed_df %>% filter(expression > mch_cutoff)
-trimmed_filtered_df <- trimmed_filtered_df %>% filter(!(strain == "MCH90"))
+#trimmed_filtered_df <- trimmed_filtered_df %>% filter(!(strain == "MCH90"))
 
 
 mch_coefficients <- regression_function(trimmed_filtered_df$expression,
                                    trimmed_filtered_df$growthrate,
                                    trimmed_filtered_df$strain)
-mch_plot <- plot_exp_gr(trimmed_df, mch_coefficients, "Relative Expression\n(ΔRFS/mean(OD660)/h)")
+mch_plot <- plot_exp_gr(trimmed_filtered_df, mch_coefficients, "Relative Expression\n(ΔRFS/mean(OD660)/h)")
 mch_plot
 
 mch_per_slopes <- plot_slopes(trimmed_filtered_df$expression,
@@ -180,7 +183,7 @@ trimmed_filtered_df <- trimmed_df %>% filter(expression > gfp_cutoff)
 gfp_coefficients <- regression_function(trimmed_filtered_df$expression,
                                                trimmed_filtered_df$growthrate,
                                                trimmed_filtered_df$strain)
-gfp_plot_per <- plot_exp_gr(trimmed_df, gfp_coefficients, "Relative Expression\n(ΔGFS/mean(OD660)/h)")
+gfp_plot_per <- plot_exp_gr(trimmed_filtered_df, gfp_coefficients, "Relative Expression\n(ΔGFS/mean(OD660)/h)")
 gfp_plot_per
 
 gfp_per_slopes <- plot_slopes(trimmed_filtered_df$expression,
@@ -202,7 +205,7 @@ trimmed_filtered_df <- trimmed_df %>% filter(expression > gfp_cutoff)
 gfp_coefficients <- regression_function(trimmed_filtered_df$expression,
                                                trimmed_filtered_df$growthrate,
                                                trimmed_filtered_df$strain)
-gfp_plot_sat <- plot_exp_gr(trimmed_df, gfp_coefficients, "Relative Expression\n(ΔGFS/mean(OD660)/h)")
+gfp_plot_sat <- plot_exp_gr(trimmed_filtered_df, gfp_coefficients, "Relative Expression\n(ΔGFS/mean(OD660)/h)")
 gfp_plot_sat
 
 gfp_sat_slopes <- plot_slopes(trimmed_filtered_df$expression,
@@ -214,3 +217,7 @@ ggsave('expr_v_grow/sat_gfp_growth.svg', gfp_plot_sat, width = 3.5, height = 3)
 
 mch_plot + gfp_plot_per + gfp_plot_sat
 mch_per_slopes + gfp_per_slopes + gfp_sat_slopes
+
+ggsave('expr_v_grow/sat_gfp_slopes.svg', gfp_plot_sat, width = 3.5, height = 3)
+ggsave('expr_v_grow/per_mch_slopes.svg', mch_per_slopes, width = 3.5, height = 3)
+ggsave('expr_v_grow/per_gfp_slopes.svg', gfp_per_slopes, width = 3.5, height = 3)
