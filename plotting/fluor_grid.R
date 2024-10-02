@@ -58,7 +58,7 @@ t1 = mch_time_start-900*window_size
 t3 = mch_time_start
 shift_amnt = -3
 
-maxy = 20000
+maxy = 15
 
 
 df = read.csv("../processed_data/experimental_per_mcherry.csv")
@@ -73,7 +73,7 @@ t1 = gfp_time_start-900*window_size
 t3 = gfp_time_start
 shift_amnt = 0
 
-maxy = 80000
+maxy = 10
 
 df = read.csv("../processed_data/experimental_per_gfp.csv")
 

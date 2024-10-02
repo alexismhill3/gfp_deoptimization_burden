@@ -138,8 +138,8 @@ df_gfp_sat = read.csv("../processed_data/experimental_sat_gfp.csv")
 
 cutoff_percent <- 0.1
 #regression_function <- linreg_decent_variable_b_coef
-#regression_function <- linreg_decent_fixed_b_coef
-regression_function <- linreg_decent_set_b_coef
+regression_function <- linreg_decent_fixed_b_coef
+#regression_function <- linreg_decent_set_b_coef
 
 mch_cutoff <- max(df_mch_per$expression, na.rm = TRUE)*cutoff_percent
 gfp_cutoff <- max(max(df_gfp_per $expression, na.rm = TRUE), max(df_gfp_sat$expression, na.rm = TRUE))*cutoff_percent

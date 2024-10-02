@@ -17,7 +17,16 @@ files= c('../../wet_scripting/percent_day_1/per1clean.csv',
          '../../wet_scripting/saturation_day_3/sat3clean.csv',
          '../../wet_scripting/percent_day_4/per4clean.csv',
          '../../wet_scripting/percent_day_5/per5clean.csv',
-         '../../wet_scripting/percent_day_6/per6clean.csv')
+         '../../wet_scripting/percent_day_6/per6clean.csv',
+         '../../wet_scripting/low_temp_day_1/LT1clean.csv',
+         '../../wet_scripting/low_temp_day_2/LT2clean.csv',
+         '../../wet_scripting/low_temp_day_3/LT3clean.csv',
+         '../../wet_scripting/uninduced_day_1/uninduced1clean.csv',
+         '../../wet_scripting/uninduced_day_2/uninduced2clean.csv',
+         '../../wet_scripting/uninduced_day_3/uninduced3clean.csv',
+         '../../wet_scripting/uninduced_day_4/uninduced4clean.csv',
+         '../../wet_scripting/uninduced_day_5/uninduced5clean.csv',
+         '../../wet_scripting/uninduced_day_6/uninduced6clean.csv')
 
 
 window_size <- 4
@@ -85,6 +94,7 @@ for (filename in files){
   # Add it to the master dataframe
   master_df = rbind(master_df, processed_data)
 }
+master_df <- master_df  %>% filter_all(all_vars(!is.infinite(.)))
 
 # Normalize fluorescence to maximum appearant fluorescence for each fluorophore
 max_gfp <- max(master_df$GFP)
@@ -107,6 +117,7 @@ master_df<- master_df %>%
                                groupID %like% "GGG" ~ gfp_norm,
                                groupID %like% "CTA" ~ gfp_norm,
                                groupID %like% "MCH" ~ mch_norm))
+
 master_df <- master_df %>%
   mutate(tgt_expression = case_when(groupID %like% "GFP" ~ gfp_expression,
                                     groupID %like% "GGA" ~ gfp_expression,
@@ -123,8 +134,8 @@ names(master_df )[names(master_df ) == 'tgt_expression'] <- 'expression'
 per_mch_df <-  master_df %>% filter(groupID %like% "MCH")
 write.csv(per_mch_df, file = "../experimental_per_mcherry.csv")
 
-per_gfp_df <- master_df %>% filter(experiment %in% c(7, 8, 9))
+per_gfp_df <- master_df %>% filter(groupID %like% "GFP")
 write.csv(per_gfp_df, file = "../experimental_per_gfp.csv")
 
-sat_gfp_df <- master_df %>% filter(experiment %in% c(4, 5, 6))
+sat_gfp_df <- master_df %>% filter(strain %in% c("GFP50", "GGG", "GGA", "GAG", "CTA"))
 write.csv(sat_gfp_df, file = "../experimental_sat_gfp.csv")

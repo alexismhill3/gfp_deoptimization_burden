@@ -12,7 +12,7 @@ library(scales)
 plot_growth <- function(df, strain_name){
   filtered_master <- df %>% filter(groupID %like% strain_name)
   return(ggplot() + 
-           geom_line(data=filtered_master, aes(x = time, y = OD660, group=groupID, alpha = 0.05)) +
+           geom_line(data=filtered_master, aes(x = time, y = OD660, group=interaction(groupID, well), alpha = 0.05)) +
            scale_x_time(breaks = scales::breaks_width("2 hours"), labels=NULL, limits=c(0, 900*4*8)) +
            geom_vline(xintercept=t1, linetype='dashed') +
            geom_vline(xintercept=t3, linetype='dashed')  + theme_bw() +
