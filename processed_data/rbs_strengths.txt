@@ -1,0 +1,26 @@
+M10 <- R4    R1    R0.5  R2    R0.25
+M25 <- R0.5  R1    R2    R0.25 R4
+M50 <- R1    R2    R4    R0.5  R0.25
+M75 <- R1    R2    R4    R0.25 R0.5
+M90 <- R0.25  R0.5  R2    R4    R1
+MCH ALL R1 > R2 > R0.5 > R4 > R0.5
+
+G10 <- R0.5  R0.25=R1    R4    R2
+G25 <- R2    R0.25 R4    R0.5  R1
+G50 <- R0.25 R4    R0.5  R1    R2
+G75 <- R1    R4    R0.5  R2    R0.25
+G90 <- R1    R0.5  R4    R0.25 R2
+GFP PER R0.5 R4 R1=R0.25 R2
+
+CTA <- R0.25 R2    R0.5   R1 R4
+GAG <- R4    R0.5 R0.25  R2   R1
+GGA <- R0.25 R1    R2   R0.5 R4
+GGG <- R0.25  R4   R1   R0.5   R2
+GFP SAT R0.25 > R2 > R4 > R0.5 > R1
+
+GFP ALL R0.25 > R0.5 > 4 >R1 >R2
+
+ALL R0.25 > R1 > R0.5 >R4 > R2
+
+
+

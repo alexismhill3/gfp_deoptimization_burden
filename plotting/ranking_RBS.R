@@ -111,27 +111,6 @@ plot_exp_gr <- function(df, coefficients, xtitle, colors){
   return (result)
 }
 
-plot_slopes <- function(x_column, y_column, categories, colors){
-  coefficients <- linreg_decent_set_b_coef(x_column, y_column, categories)
-  model <- linreg_decent_set_b(x_column, y_column, categories)
-  model$coef <- lapply(model$model, coef)
-  model <- unnest_wider(model, coef)
-  model$b <- set_intersept
-  model$stderr <- lapply(model$model, function(mo) {summary(mo)$coefficients[, "Std. Error"]})
-  model <- unnest(model, stderr)
-  colnames(model)[colnames(model) == 'x'] <- 'm'
-  plot <- ggplot(model, aes(x=species, y=abs(m), fill=species)) +
-    geom_bar(stat = "identity") + theme_bw() +    
-    geom_errorbar(aes(x=species, ymin=abs(m)-stderr, ymax=abs(m)+stderr)) +
-    scale_fill_manual(values=colors) +
-    theme_bw() + theme(text = element_text(size = 16, family="Arial MS"), legend.position="none",
-                       axis.title.x = element_text(size = 16, family="Arial MS"),
-                       axis.title.y = element_text(size = 16, family="Arial MS"),
-                       axis.text.x = element_text(angle = 90,, size = 16, family="Arial MS")
-                       ) +
-    xlab("CDS") + ylab("abs(slope)")    
-  
-  return (plot)}
 
 # ------------------- Generate
 df_mch_per = read.csv("../processed_data/experimental_per_mcherry.csv")
@@ -156,7 +135,6 @@ gfp_cutoff <- max(max(df_gfp_per $expression, na.rm = TRUE), max(df_gfp_sat$expr
 
 # -- mCherry
 global_growth_time = 11700+900*-2
-colors = c("#fde725", "#5ec962", "#21918c", '#3b528b', '#440154')
 
 mcherry_growth_time <- global_growth_time
 mcherry_fluor_time <- global_growth_time+900*2
@@ -164,80 +142,47 @@ mcherry_fluor_time <- global_growth_time+900*2
 trimmed_df <- trim_df(df_mch_per, mcherry_growth_time, mcherry_fluor_time)
 trimmed_filtered_df <- trimmed_df %>% filter(expression > mch_cutoff)
 
-trimmed_filtered_df_2 <- trimmed_df %>% filter(experiment > 12) %>% filter(expression <= mch_cutoff) %>% filter(well %in% uninduced_wells) 
-trimmed_filtered_df <- rbind(trimmed_filtered_df, trimmed_filtered_df_2)
-#trimmed_filtered_df <- trimmed_filtered_df %>% filter(!(strain == "MCH90"))
+mcherry_counts <- trimmed_filtered_df %>% group_by(strain) %>% 
+  arrange(desc(expression), .by_group = TRUE) %>% 
+  mutate(score = row_number()) %>%
+  group_by(strain, rbs) %>%  
+  summarise(score = mean(score), .groups = "drop")  # Sum index and drop grouping
 
 
-mch_coefficients <- regression_function(trimmed_filtered_df$expression,
-                                   trimmed_filtered_df$growthrate,
-                                   trimmed_filtered_df$strain)
-mch_plot <- plot_exp_gr(trimmed_filtered_df, mch_coefficients, "Relative Expression\n(ΔRFS/mean(OD660)/h)", colors)
-mch_plot
-
-mch_per_slopes <- plot_slopes(trimmed_filtered_df$expression,
-                              trimmed_filtered_df$growthrate,
-                              trimmed_filtered_df$strain, colors)
-
-ggsave('expr_v_grow/per_mch_growth.svg', mch_plot, width = 3.5, height = 3)
 
 
-# -- sfGFP percent based
+
+# -- sfGFP percent based 
 gfp_growth_time <- global_growth_time
 gfp_fluor_time <- global_growth_time+900*0
-colors = c("#fde725", "#5ec962", "#21918c", '#3b528b', '#440154')
-
 trimmed_df <- trim_df(df_gfp_per, gfp_growth_time, gfp_fluor_time)
 trimmed_filtered_df <- trimmed_df %>% filter(expression > gfp_cutoff)
-trimmed_filtered_df_2 <- trimmed_df %>% filter(experiment > 12) %>% filter(expression <= gfp_cutoff) %>% filter(well %in% uninduced_wells) 
-trimmed_filtered_df <- rbind(trimmed_filtered_df, trimmed_filtered_df_2)
+
+per_gfp_counts <- trimmed_filtered_df %>% group_by(strain) %>% 
+  arrange(desc(expression), .by_group = TRUE) %>% 
+  mutate(score = row_number()) %>%
+  group_by(strain, rbs) %>%  
+  summarise(score = mean(score), .groups = "drop")  # Sum index and drop grouping
 
 
-gfp_coefficients <- regression_function(trimmed_filtered_df$expression,
-                                               trimmed_filtered_df$growthrate,
-                                               trimmed_filtered_df$strain)
-gfp_plot_per <- plot_exp_gr(trimmed_filtered_df, gfp_coefficients, "Relative Expression\n(ΔGFS/mean(OD660)/h)", colors)
-gfp_plot_per
 
-gfp_per_slopes <- plot_slopes(trimmed_filtered_df$expression,
-                              trimmed_filtered_df$growthrate,
-                              trimmed_filtered_df$strain, colors)
-
-
-ggsave('expr_v_grow/per_gfp_growth.svg', gfp_plot_per, width = 3.5, height = 3)
 
 
 # -- sfGFP sat based
-colors = c("#E69F00", "#56B4E9", "#009E73", '#F0E442', '#0072B2')
 gfp_growth_time <- global_growth_time
 gfp_fluor_time <- global_growth_time+900*0
 
 
 trimmed_df <- trim_df(df_gfp_sat, gfp_growth_time, gfp_fluor_time)
 trimmed_filtered_df <- trimmed_df %>% filter(expression > gfp_cutoff)
-trimmed_filtered_df_2 <- trimmed_df %>% filter(experiment > 12) %>% filter(expression <= gfp_cutoff) %>% filter(well %in% uninduced_wells) 
-trimmed_filtered_df <- rbind(trimmed_filtered_df, trimmed_filtered_df_2)
+
+sat_gfp_counts <- trimmed_filtered_df %>% group_by(strain) %>% 
+  arrange(desc(expression), .by_group = TRUE) %>% 
+  mutate(score = row_number()) %>%
+  group_by(strain, rbs) %>%  
+  summarise(score = mean(score), .groups = "drop")  # Sum index and drop grouping
 
 
-gfp_coefficients <- regression_function(trimmed_filtered_df$expression,
-                                               trimmed_filtered_df$growthrate,
-                                               trimmed_filtered_df$strain)
-gfp_plot_sat <- plot_exp_gr(trimmed_filtered_df, gfp_coefficients, "Relative Expression\n(ΔGFS/mean(OD660)/h)", colors)
-gfp_plot_sat
-
-gfp_sat_slopes <- plot_slopes(trimmed_filtered_df$expression,
-                              trimmed_filtered_df$growthrate,
-                              trimmed_filtered_df$strain, colors)
-
-ggsave('expr_v_grow/sat_gfp_growth.svg', gfp_plot_sat, width = 3.5, height = 3)
-
-
-mch_plot + gfp_plot_per + gfp_plot_sat
-mch_per_slopes + gfp_per_slopes + gfp_sat_slopes
-
-ggsave('expr_v_grow/sat_gfp_slopes.svg', gfp_sat_slopes, width = 3.5, height = 3)
-ggsave('expr_v_grow/per_mch_slopes.svg', mch_per_slopes, width = 3.5, height = 3)
-ggsave('expr_v_grow/per_gfp_slopes.svg', gfp_per_slopes, width = 3.5, height = 3)
 
 
 

@@ -9,24 +9,27 @@ library(scales)
 
 # # Load all the data into R
 #
-files= c('../../wet_scripting/percent_day_1/per1clean.csv',
-         '../../wet_scripting/percent_day_2/per2clean.csv',
-         '../../wet_scripting/percent_day_3/per3clean.csv',
-         '../../wet_scripting/saturation_day_1/sat1clean.csv',
-         '../../wet_scripting/saturation_day_2/sat2clean.csv',
-         '../../wet_scripting/saturation_day_3/sat3clean.csv',
-         '../../wet_scripting/percent_day_4/per4clean.csv',
-         '../../wet_scripting/percent_day_5/per5clean.csv',
-         '../../wet_scripting/percent_day_6/per6clean.csv',
-         '../../wet_scripting/low_temp_day_1/LT1clean.csv',
-         '../../wet_scripting/low_temp_day_2/LT2clean.csv',
-         '../../wet_scripting/low_temp_day_3/LT3clean.csv',
-         '../../wet_scripting/uninduced_day_1/uninduced1clean.csv',
-         '../../wet_scripting/uninduced_day_2/uninduced2clean.csv',
-         '../../wet_scripting/uninduced_day_3/uninduced3clean.csv',
-         '../../wet_scripting/uninduced_day_4/uninduced4clean.csv',
-         '../../wet_scripting/uninduced_day_5/uninduced5clean.csv',
-         '../../wet_scripting/uninduced_day_6/uninduced6clean.csv')
+files= c('../../wet_scripting/percent_day_1/per1clean.csv',          #1
+         '../../wet_scripting/percent_day_2/per2clean.csv',          #2
+         '../../wet_scripting/percent_day_3/per3clean.csv',          #3
+         '../../wet_scripting/saturation_day_1/sat1clean.csv',       #4
+         '../../wet_scripting/saturation_day_2/sat2clean.csv',       #5
+         '../../wet_scripting/saturation_day_3/sat3clean.csv',       #6
+         '../../wet_scripting/percent_day_4/per4clean.csv',          #7
+         '../../wet_scripting/percent_day_5/per5clean.csv',          #8
+         '../../wet_scripting/percent_day_6/per6clean.csv',          #9
+         '../../wet_scripting/low_temp_day_1/LT1clean.csv',          #10
+         '../../wet_scripting/low_temp_day_2/LT2clean.csv',          #11
+         '../../wet_scripting/low_temp_day_3/LT3clean.csv',          #12
+         '../../wet_scripting/uninduced_day_1/uninduced1clean.csv',  #13
+         '../../wet_scripting/uninduced_day_2/uninduced2clean.csv',  #14
+         '../../wet_scripting/uninduced_day_3/uninduced3clean.csv',  #15
+         '../../wet_scripting/uninduced_day_4/uninduced4clean.csv',  #16
+         '../../wet_scripting/uninduced_day_5/uninduced5clean.csv',  #17
+         '../../wet_scripting/uninduced_day_6/uninduced6clean.csv',  #18
+         '../../wet_scripting/uninduced_day_7/uninduced7clean.csv',  #19
+         '../../wet_scripting/uninduced_day_8/uninduced8clean.csv',  #20
+         '../../wet_scripting/uninduced_day_9/uninduced9clean.csv')  #21
 
 
 window_size <- 4
