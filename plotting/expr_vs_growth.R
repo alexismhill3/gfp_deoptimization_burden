@@ -92,7 +92,7 @@ plot_exp_gr <- function(df, coefficients, xtitle, colors){
                    y = growthrate,
                    color=strain,
                    shape=rbs,
-                   size=3, alpha=0.9,
+                   size=2,
                    group=groupID)) +
     theme_bw() + theme(text = element_text(size = 16, family="Arial MS"), legend.position="none",
                        axis.title.x = element_text(size = 16, family="Arial MS"),
@@ -112,24 +112,38 @@ plot_exp_gr <- function(df, coefficients, xtitle, colors){
 }
 
 plot_slopes <- function(x_column, y_column, categories, colors){
-  coefficients <- linreg_decent_set_b_coef(x_column, y_column, categories)
-  model <- linreg_decent_set_b(x_column, y_column, categories)
-  model$coef <- lapply(model$model, coef)
-  model <- unnest_wider(model, coef)
-  model$b <- set_intersept
-  model$stderr <- lapply(model$model, function(mo) {summary(mo)$coefficients[, "Std. Error"]})
-  model <- unnest(model, stderr)
-  colnames(model)[colnames(model) == 'x'] <- 'm'
-  plot <- ggplot(model, aes(x=species, y=abs(m), fill=species)) +
+  coefficients <- linreg_decent_fixed_b_coef(x_column, y_column, categories)
+  model <- linreg_decent_fixed_b(x_column, y_column, categories)
+  model_coef <- model$coef
+  stderr_vector <- summary(model)$coefficients[, "Std. Error"]
+  
+  intercept_value <- model_coef["(Intercept)"]
+  
+  model_coef <- model_coef[names(model_coef) != "(Intercept)"]
+  stderr_vector <- stderr_vector[names(stderr_vector) != "(Intercept)"]
+  
+  
+  df <- data.frame(name = names(model_coef), m = model_coef, stderr = stderr_vector, row.names = NULL)
+  
+  df_final <- df %>%
+    separate(name, into = c("dummy", "species"), sep = ":", fill = "left") %>%
+    mutate(species = gsub("^species", "", species),
+           b = intercept_value,) %>%
+    select(b, species, m, stderr) %>% arrange(m)
+  
+  df_final$species <- factor(df_final$species, levels = df_final$species)
+  print(df_final)
+  plot <- ggplot(df_final, aes(x=species, y=abs(m), fill=species)) +
     geom_bar(stat = "identity") + theme_bw() +    
     geom_errorbar(aes(x=species, ymin=abs(m)-stderr, ymax=abs(m)+stderr)) +
     scale_fill_manual(values=colors) +
     theme_bw() + theme(text = element_text(size = 16, family="Arial MS"), legend.position="none",
                        axis.title.x = element_text(size = 16, family="Arial MS"),
                        axis.title.y = element_text(size = 16, family="Arial MS"),
-                       axis.text.x = element_text(angle = 90,, size = 16, family="Arial MS")
+                       axis.text.y = element_text(size = 16, family="Arial MS"),
+                       axis.text.x = element_text(angle = 90, size = 16, family="Arial MS")
                        ) +
-    xlab("CDS") + ylab("abs(slope)")    
+    xlab("CDS") + ylab("Overexpression\nBurden")    
   
   return (plot)}
 
@@ -179,8 +193,18 @@ mch_per_slopes <- plot_slopes(trimmed_filtered_df$expression,
                               trimmed_filtered_df$growthrate,
                               trimmed_filtered_df$strain, colors)
 
+mch_per_top <- as.data.frame(trimmed_filtered_df %>% 
+                               group_by(strain) %>% 
+                               slice_max(expression, prop = 0.10) %>%
+                               summarize(expression = mean(expression), growthrate = mean(growthrate)))
+mch_per_top  <- merge(mch_per_top , mch_coefficients, by='strain', all.x=TRUE)
+mch_per_top$calc_growthrate <- mch_per_top$expression*mch_per_top$m+mch_per_top$b
+mch_per_top$percent <- 1-mch_per_top$calc_growthrate/mch_per_top$b
+mch_per_top
+
 ggsave('expr_v_grow/per_mch_growth.svg', mch_plot, width = 3.5, height = 3)
 
+okay_mch_measurements <- unique(trimmed_filtered_df$groupID)
 
 # -- sfGFP percent based
 gfp_growth_time <- global_growth_time
@@ -195,7 +219,7 @@ trimmed_filtered_df <- rbind(trimmed_filtered_df, trimmed_filtered_df_2)
 
 gfp_coefficients <- regression_function(trimmed_filtered_df$expression,
                                                trimmed_filtered_df$growthrate,
-                                               trimmed_filtered_df$strain)
+                                             trimmed_filtered_df$strain)
 gfp_plot_per <- plot_exp_gr(trimmed_filtered_df, gfp_coefficients, "Relative Expression\n(ΔGFS/mean(OD660)/h)", colors)
 gfp_plot_per
 
@@ -203,12 +227,22 @@ gfp_per_slopes <- plot_slopes(trimmed_filtered_df$expression,
                               trimmed_filtered_df$growthrate,
                               trimmed_filtered_df$strain, colors)
 
+gfp_per_top <- as.data.frame(trimmed_filtered_df %>% 
+                               group_by(strain) %>% 
+                               slice_max(expression, prop = 0.10) %>%
+                               summarize(expression = mean(expression), growthrate = mean(growthrate)))
+gfp_per_top  <- merge(gfp_per_top , gfp_coefficients, by='strain', all.x=TRUE)
+gfp_per_top$calc_growthrate <- gfp_per_top$expression*gfp_per_top$m+gfp_per_top$b
+gfp_per_top$percent <- 1-gfp_per_top$calc_growthrate/gfp_per_top$b
+gfp_per_top 
+
 
 ggsave('expr_v_grow/per_gfp_growth.svg', gfp_plot_per, width = 3.5, height = 3)
+okay_pergfp_measurements <- unique(trimmed_filtered_df$groupID)
 
 
 # -- sfGFP sat based
-colors = c("#E69F00", "#56B4E9", "#009E73", '#F0E442', '#0072B2')
+colors = c("#E69F00", '#F0E442', '#0072B2', "#56B4E9",   "#009E73")
 gfp_growth_time <- global_growth_time
 gfp_fluor_time <- global_growth_time+900*0
 
@@ -222,6 +256,7 @@ trimmed_filtered_df <- rbind(trimmed_filtered_df, trimmed_filtered_df_2)
 gfp_coefficients <- regression_function(trimmed_filtered_df$expression,
                                                trimmed_filtered_df$growthrate,
                                                trimmed_filtered_df$strain)
+gfp_coefficients <- gfp_coefficients[order(gfp_coefficients$m), ]
 gfp_plot_sat <- plot_exp_gr(trimmed_filtered_df, gfp_coefficients, "Relative Expression\n(ΔGFS/mean(OD660)/h)", colors)
 gfp_plot_sat
 
@@ -231,13 +266,27 @@ gfp_sat_slopes <- plot_slopes(trimmed_filtered_df$expression,
 
 ggsave('expr_v_grow/sat_gfp_growth.svg', gfp_plot_sat, width = 3.5, height = 3)
 
+model <- linreg_decent_fixed_b(trimmed_filtered_df$expression,
+                               trimmed_filtered_df$growthrate,
+                               trimmed_filtered_df$strain)
+
+gfp_sat_top <- as.data.frame(trimmed_filtered_df %>% 
+                group_by(strain) %>% 
+                slice_max(expression, prop = 0.10) %>%
+                summarize(expression = mean(expression), growthrate = mean(growthrate)))
+gfp_sat_top <- merge(gfp_sat_top , gfp_coefficients, by='strain', all.x=TRUE)
+gfp_sat_top$calc_growthrate <- gfp_sat_top$expression*gfp_sat_top$m+gfp_sat_top$b
+gfp_sat_top$percent <- 1-gfp_sat_top$calc_growthrate/gfp_sat_top$b
+gfp_sat_top
 
 mch_plot + gfp_plot_per + gfp_plot_sat
 mch_per_slopes + gfp_per_slopes + gfp_sat_slopes
 
-ggsave('expr_v_grow/sat_gfp_slopes.svg', gfp_sat_slopes, width = 3.5, height = 3)
+ggsave('expr_v_grow/sat_gfp_slopes.svg', gfp_sat_slopes, width = 3.5, height = 3+0.214)
 ggsave('expr_v_grow/per_mch_slopes.svg', mch_per_slopes, width = 3.5, height = 3)
 ggsave('expr_v_grow/per_gfp_slopes.svg', gfp_per_slopes, width = 3.5, height = 3)
+okay_satgfp_measurements <- unique(trimmed_filtered_df$groupID)
 
+okay_measurements <- c(okay_mch_measurements, okay_pergfp_measurements, okay_satgfp_measurements)
 
 

@@ -43,6 +43,12 @@ well_placements <- data.frame(cds = c(0),
                               well = c('l'),
                               experiment =c(1))
 
+rbs_names <- c('T7' = 'R1',
+               'A' = 'R0.25',
+               'B' = 'R0.5',
+               'C' = 'R2',
+               'D' = 'R4')
+
 
 master_df = data.frame()
 for (filename in files){
@@ -54,7 +60,6 @@ for (filename in files){
   for (welltgt in used_wells){
     well_data <- csv_data %>% filter(well == welltgt)
     cds <- well_data$strain[1]
-    print(well_data$strain[1])
     rbs <- well_data$rbs[1]
     well_placements[nrow(well_placements)+1, ] <- c(cds, rbs, welltgt, experiment_ID)
   }
@@ -134,6 +139,21 @@ names(master_df )[names(master_df ) == 'tgt_fluor'] <- 'fluor'
 names(master_df )[names(master_df ) == 'tgt_expression'] <- 'expression'
 
 
+
+rbs_names <- c('E' = 'R1',
+               'A' = 'R0.25',
+               'B' = 'R0.5',
+               'C' = 'R2',
+               'D' = 'R4')
+
+# Make RBS names abstract
+master_df$rbs = names(rbs_names)[match(master_df$rbs, rbs_names)]
+master_df$groupID <- paste(master_df$experiment,
+                           master_df$strain,
+                           master_df$rbs)
+
+
+# Save
 per_mch_df <-  master_df %>% filter(groupID %like% "MCH")
 write.csv(per_mch_df, file = "../experimental_per_mcherry.csv")
 
