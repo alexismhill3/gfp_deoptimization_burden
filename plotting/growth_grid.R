@@ -21,8 +21,8 @@ timeHM_formatter <- function(x) { # https://r-graphics.org/recipe-axes-time-rel
 plot_growth <- function(df, strain_name){
   filtered_master <- df %>% filter(groupID %like% strain_name)
   return(ggplot() + 
-           geom_line(data=filtered_master, aes(x = time, y = OD660, group=interaction(groupID, well), alpha = 0.05)) +
-           scale_x_continuous(breaks=c(0,900*8, 900*16,900*24, 900*32, 900*40), labels=NULL, limits=c(0, 900*4*8)) +
+           geom_line(data=filtered_master, aes(x = time, y = OD660, group=groupID), alpha = 0.3) +
+           scale_x_continuous(breaks=c(0,900*8, 900*16,900*24, 900*32, 900*40), labels=NULL, limits=c(0, 900*4*6)) +
            geom_vline(xintercept=t1, linetype='dashed') +
            geom_vline(xintercept=t3, linetype='dashed')  + theme_bw() +
            xlab("") + ylab("") + scale_y_continuous(limits = c(0, 1), labels=NULL) +

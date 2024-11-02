@@ -76,7 +76,7 @@ for (filename in files){
   csv_data$experiment <- experiment_ID
   csv_data$groupID <- paste(csv_data$experiment,
                             csv_data$strain,
-                            csv_data$rbs)
+                            csv_data$rbs, csv_data$well)
   
   # Fix time
   csv_data$time <- round(csv_data$time/900)*900
@@ -150,7 +150,7 @@ rbs_names <- c('E' = 'R1',
 master_df$rbs = names(rbs_names)[match(master_df$rbs, rbs_names)]
 master_df$groupID <- paste(master_df$experiment,
                            master_df$strain,
-                           master_df$rbs)
+                           master_df$rbs, master_df$well)
 
 
 # Save
