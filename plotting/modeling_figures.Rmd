@@ -41,8 +41,8 @@ df_prot_cal %>% filter(species == "cellularProtein") %>%
                      direction=1,
                      breaks = c(10, 100, 1000),
                      labels = c(expression(10^{1}), expression(10^{2}), expression(10^{3}))) +
-  scale_x_continuous(name = expression(f[opt])) +
-  scale_y_continuous(name = "protein",
+  scale_x_continuous(name = expression(Average~f[opt])) +
+  scale_y_continuous(name = "Total Protein",
                      breaks=c(0, 50000, 100000),
                      labels=c(0, expression(5*"x"*10^{4}), expression(1*"x"*10^{5}))) +
   scale_alpha_manual(values = c(1, 1), guide = FALSE) +
@@ -86,26 +86,36 @@ base_plot <- function() {
 }
 
 grid_opt <- base_plot() + 
-  geom_tile(data=df_grid_form, aes(y = as.factor(charging_rate), x = as.factor(speed), fill = TTT_charged_perc)) +
-  scale_fill_continuous_diverging(palette = "Blue-Red", 
+  geom_tile(data=df_grid_form, 
+            aes(y = as.factor(charging_rate), x = as.factor(speed), fill = TTT_charged_perc), 
+            alpha=0.85) +
+  scale_fill_continuous_diverging(palette = "Purple-Brown", 
                                   mid = 0.75,
-                                  name = expression(T[c]^{opt})) +
-  geom_point(aes(x=5, y=3))
+                                  name = expression(T[c]^{opt}),
+                                  ) +
+  geom_point(aes(x=5, y=3)) +
+  theme(panel.grid = element_blank())
   
 grid_non_opt <- base_plot() + 
-  geom_tile(data=df_grid_form, aes(y = as.factor(charging_rate), x = as.factor(speed), fill = ATA_charged_perc)) +
-  scale_fill_continuous_diverging(palette = "Blue-Red", 
+  geom_tile(data=df_grid_form, 
+            aes(y = as.factor(charging_rate), x = as.factor(speed), fill = ATA_charged_perc),
+            alpha=0.85) +
+  scale_fill_continuous_diverging(palette = "Purple-Brown", 
                                   mid = 0.75,
-                                  name = expression(T[c]^{non-opt})) +
-  geom_point(aes(x=5, y=3))
-
+                                  name = expression(T[c]^{nopt})) +
+  geom_point(aes(x=5, y=3)) +
+  theme(panel.grid = element_blank())
 
 grid_rib <- base_plot() + 
-  geom_tile(data=df_grid_form, aes(y = as.factor(charging_rate), x = as.factor(speed), fill = free_rib_perc)) +
-  scale_fill_continuous_diverging(palette = "Blue-Red", 
+  geom_tile(data=df_grid_form, 
+            aes(y = as.factor(charging_rate), x = as.factor(speed), fill = free_rib_perc),
+            alpha=0.85) +
+  scale_fill_continuous_diverging(palette = "Purple-Brown", 
                                   mid = 0.15,
                                   name = expression(R[f])) +
-  geom_point(aes(x=5, y=3))
+  geom_point(aes(x=5, y=3)) +
+  theme(panel.grid = element_blank())
+
 
 ```
 
@@ -144,14 +154,19 @@ date = "august-9-2024"
 df_skew <- read_csv("../processed_data/gfp_experiment_trna_07_03_speed_2_ecol_6_8_10.csv")
 ```
 
+```{r}
+df_skew
+```
+
+
 ```{r, fig.width=8, fig.height=2.5}
 gfp_plot <- df_skew %>% filter(charging_rate == 100, ecol %in% c(0.6, 0.8, 1.0), gfp_rbs_foldx < 10) %>%
-  ggplot(aes(GFP, cellularProtein_norm, color = factor(codon))) +
+  ggplot(aes(GFP, cellularProtein_norm, color = factor(codon, levels=c("0.9", "0.7", "0.5", "0.3", "0.1")))) +
     geom_point(size=2) + 
     geom_smooth(method = "lm", se = FALSE, formula = y ~ x + 1, fullrange=TRUE) +
-    facet_wrap(~ecol, labeller = label_bquote(f[opt] ^ cell == .(ecol))) +
-    xlab("GFP") +
-    ylab("cell protein") +
+    facet_wrap(~ecol, labeller = label_bquote(f[opt] ^ CP == .(ecol))) +
+    xlab("OEP Expression Rate") +
+    ylab("Rel. Growth Rate") +
     scale_y_continuous(limits = c(0.6, 1)) +
     scale_x_continuous(breaks= c(0, 2500, 5000, 7500),
     #                   labels = c(expression(2.5*"x"*10^{3}), 
@@ -160,7 +175,9 @@ gfp_plot <- df_skew %>% filter(charging_rate == 100, ecol %in% c(0.6, 0.8, 1.0),
     #                   expression(1*"x"*10^{4}))) +
     ) +
     #scale_x_continuous(limits=c(0, 10000)) + scale_y_continuous(limits=c(0.8, 1.0)) +
-    scale_color_discrete_sequential(name=expression(f[opt]^GFP), palette = "viridis") +
+    scale_color_discrete_sequential(name=expression(f[opt]^OEP), 
+                                    palette = "viridis",
+                                    rev = FALSE) +
     theme_bw() +
     theme(panel.grid.minor.x = element_blank(),
           panel.grid.minor.y = element_blank())
@@ -175,10 +192,10 @@ base_plot <- function (data) {
   #geom_point() +
   geom_line(linewidth = 1.25) +
   geom_vline(xintercept = 0.7, alpha=0.5, linewidth=1.25, linetype="dashed") +
-  scale_x_continuous(name = expression(f[opt]),
+  scale_x_continuous(name = expression(Average~f[opt]),
                          breaks = c(0, 0.25, 0.5, 0.75, 1),
                          labels = c("0", "0.25", "0.5", "0.75", "1")) +
-  scale_y_continuous(name = "protein") +
+  scale_y_continuous(name = "Total Protein") +
   theme_classic() +
   theme(axis.title = element_text(size = 12),
             axis.text = element_text(size = 12),
