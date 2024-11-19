@@ -1,4 +1,4 @@
-This folder contains all notebooks, python scripts, and software dependencies that were used to run simulations in Roots et al:
+This folder contains all notebooks, python scripts, and software dependencies that were used to run simulations in Roots et al 2024:
 
 - `*.ipynb` Creates config files and generates batch scripts for a set of simulations.
 - `scripts` Sets up and executes a single Pinetree simulation with tRNA dyanmics.
