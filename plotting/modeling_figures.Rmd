@@ -27,7 +27,7 @@ ribosome_footprint = 15
 date = "feb-27-2024"
 
 ```{r}
-df_prot_cal <- read_csv("../processed_data/calibrate_single_population_charging_1e6.csv")
+df_prot_cal <- read_csv("../simulation/calibrate_single_population_charging_1e6.csv")
 ```
 
 ```{r}
@@ -58,7 +58,7 @@ Supp. figure of grid search for reasonable parameters (kcharge, kspeed) for gfp 
 corresponding python notebook: tacc-grid_search_speed_vs_charging.ipynb
 
 ```{r}
-df_grid <- read_csv("../processed_data/speed_vs_charging_grid_search.csv")
+df_grid <- read_csv("../simulation/speed_vs_charging_grid_search.csv")
 ```
 
 ```{r}
@@ -150,8 +150,7 @@ date = "august-9-2024"
 
 
 ```{r}
-#df_skew <- read_csv("../processed_data/gfp_regression_ecol_codon_use_speed_0.5_trna_0.7.csv")
-df_skew <- read_csv("../processed_data/gfp_experiment_trna_07_03_speed_2_ecol_6_8_10.csv")
+df_skew <- read_csv("../simulation/gfp_experiment_trna_07_03_speed_2_ecol_6_8_10.csv")
 ```
 
 ```{r}
@@ -209,7 +208,7 @@ base_plot <- function (data) {
 ```
 
 ```{r}
-df_baseline <- read.csv("../processed_data/gfp_experiment_baseline.csv")
+df_baseline <- read.csv("../simulation/gfp_experiment_baseline.csv")
 df_baseline <- df_baseline %>% mutate(tot_protein = GFP + cellularProtein)
 ```
 
