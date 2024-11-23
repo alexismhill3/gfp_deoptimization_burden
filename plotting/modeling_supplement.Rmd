@@ -1,0 +1,42 @@
+```{r}
+library(tidyverse)
+```
+
+```{r}
+df_ribo <- read_csv("../processed_data/gfp_experiment_ribo_densities.csv")
+```
+
+```{r}
+okabe_ito <- c("#E69F00", "#009E73","#56B4E9", "#CC79A7", "#F0E442", "#0072B2", "#D55E00")
+
+okabe_ito_1 <- c("#009E73", "#56B4E9")
+okabe_ito_2 <- c("#56B4E9", "#CC79A7")
+
+optimal <- data.frame(fopt = c(5, 4, 1),
+             value = c(8.75, 8.75, 8.75),
+             ecol = c(0.6, 0.8, 1.0))
+
+df_ribo$species <- factor(df_ribo$species, levels = c("GFP", "cellularProtein"))
+df_ribo_03 <- df_ribo %>% filter(gfp_rbs_foldx == 3, charging_rate == 100) 
+ggplot() +
+  geom_col(data=df_ribo_03, alpha=0.7, aes(x=factor(codon), y=ribo_density, fill=species)) +
+  scale_fill_manual(name="",
+                    values=okabe_ito_1, 
+                    labels=c("OEP", "CP")) +
+  scale_y_continuous(name="Ribosomes Per Transcript",
+                     expand = expansion(mult = c(0, 0.05))) +
+  scale_x_discrete(name=expression(f[opt]^OEP)) +
+  facet_wrap(~ecol, labeller = label_bquote(f[opt] ^ CP == .(ecol))) +
+  theme_bw() +
+  geom_point(data=optimal, aes(x=fopt, y=value)) 
+
+
+ggsave("fig/gfp_sim_ribosome_density.png", width = 9, height = 3)
+```
+
+
+
+
+
+
+
