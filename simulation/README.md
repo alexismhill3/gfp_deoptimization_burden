@@ -8,6 +8,6 @@ This folder contains all notebooks, python scripts, and software dependencies th
 Raw simulation outputs are too big to host on github but can be provided upon request. To re-make the manuscript figures from processed/checkpoint data (*.csv) just run the R notebooks `plotting/modeling_figures.Rmd` and `plotting/modeling_supplement.Rmd`. It is also possible to re-run some or all of the simulations from scratch. Note that this will probably require an HPC environment (it took us 2-5 days to finish each batch of simulations running continuously on a 50 CPU machine):
 
 1. Install python dependencies: `pip install -r requirements.txt`
-2. Pip install `trnasimtools` and the `pinetree-dynamic-trnas` (cd into each folder and run `pip install .`)
+2. Pip install `trnasimtools` and `pinetree-dynamic-trnas` (cd into each folder and run `pip install .`)
 3. Run each notebook up until "Read in simulation output" and run the batch file (`<date>.txt`)
 4. Once the simulations have finished, run the rest of the notebook to process outputs into a single dataframe
