@@ -1,4 +1,4 @@
-### Data, simulation codes and analysis scripts for Roots<sup>*</sup>, C.T., Hill<sup>*</sup>, A.M., Wilke, C.O, and Barrick, J.E. "Modeling and measuring how codon usage modulates the relationship between burden and yield during protein overexpression in bacteria"
+### Data, simulation codes and analysis scripts for Roots, C.T.<sup>\*</sup>, Hill, A.M.<sup>\*</sup>, Wilke, C.O, and Barrick, J.E. "Modeling and measuring how codon usage modulates the relationship between burden and yield during protein overexpression in bacteria"
 
 Contents:
 - `wet_scripting/` Scripts for performing experiments
