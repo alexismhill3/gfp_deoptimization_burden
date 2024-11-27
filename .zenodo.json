@@ -1,0 +1,28 @@
+{
+  "license": "MIT License",
+  "title": "Modeling and measuring how codon usage modulates the relationship between burden and yield during protein overexpression in bacteria",
+  "upload_type": "dataset",
+  "creators": [
+    {
+      "name": "Roots, Cameron T.",
+      "affiliation": "Department of Molecular Biosciences, Center for Systems and Synthetic Biology, The University of Texas at Austin",
+      "orcid": "0000-0001-6219-3168"
+    },
+    {
+      "name": "Hill, Alexis M.",
+      "affiliation": "Department of Integrative Biology, The University of Texas at Austin",
+      "orcid": "0000-0002-5382-8851"
+    },
+    {
+      "name": "Wilke, Claus O.",
+      "affiliation": "Department of Integrative Biology, The University of Texas at Austin",
+      "orcid": "0000-0002-7470-9261"
+    },
+    {
+      "name": "Barrick, Jeffrey E.",
+      "affiliation": "Department of Molecular Biosciences, Center for Systems and Synthetic Biology, The University of Texas at Austin",
+      "orcid": "0000-0003-0888-7358"
+    }
+  ],
+  "access_right": "open"
+}
