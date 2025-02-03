@@ -8,6 +8,9 @@
    id="svg910"
    sodipodi:docname="figure_s6.svg"
    inkscape:version="1.4 (e7c3feb100, 2024-10-09)"
+   inkscape:export-filename="figure_s6.png"
+   inkscape:export-xdpi="600"
+   inkscape:export-ydpi="600"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -22,11 +25,11 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="pt"
-     inkscape:zoom="0.36111111"
-     inkscape:cx="45.692308"
-     inkscape:cy="816.92308"
+     inkscape:zoom="0.49305556"
+     inkscape:cx="481.69014"
+     inkscape:cy="609.46479"
      inkscape:window-width="1199"
-     inkscape:window-height="1068"
+     inkscape:window-height="589"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
@@ -305,12 +308,20 @@
      style="stroke:#333333;stroke-width:1.07;stroke-linecap:butt"
      id="polyline37" />
   <text
-     transform="rotate(90,286.59697,361.86903)"
+     transform="rotate(90,285.83897,361.11103)"
      text-anchor="middle"
      style="font-size:16px;font-family:'Noto Sans'"
      textLength="54.779999"
      lengthAdjust="spacingAndGlyphs"
      id="text37">MCH10</text>
+  <text
+     x="48.549999"
+     y="22.389999"
+     style="font-size:16px;font-family:'Noto Sans'"
+     textLength="10.22"
+     lengthAdjust="spacingAndGlyphs"
+     id="text38"
+     transform="translate(41.070423)">A</text>
   <defs
      id="defs38">
     <clipPath
@@ -509,6 +520,14 @@
      points="260.72,123.12 260.72,120.38 "
      style="stroke:#333333;stroke-width:1.07;stroke-linecap:butt"
      id="polyline72" />
+  <text
+     x="172.59"
+     y="22.389999"
+     style="font-size:16px;font-family:'Noto Sans'"
+     textLength="10.4"
+     lengthAdjust="spacingAndGlyphs"
+     id="text72"
+     transform="translate(41.070423)">B</text>
   <defs
      id="defs72">
     <clipPath
@@ -711,6 +730,14 @@
      points="384.76,123.12 384.76,120.38 "
      style="stroke:#333333;stroke-width:1.07;stroke-linecap:butt"
      id="polyline107" />
+  <text
+     x="296.63"
+     y="22.389999"
+     style="font-size:16px;font-family:'Noto Sans'"
+     textLength="10.11"
+     lengthAdjust="spacingAndGlyphs"
+     id="text107"
+     transform="translate(41.070423)">C</text>
   <defs
      id="defs107">
     <clipPath
@@ -913,6 +940,14 @@
      points="508.80,123.12 508.80,120.38 "
      style="stroke:#333333;stroke-width:1.07;stroke-linecap:butt"
      id="polyline142" />
+  <text
+     x="420.67001"
+     y="22.389999"
+     style="font-size:16px;font-family:'Noto Sans'"
+     textLength="11.68"
+     lengthAdjust="spacingAndGlyphs"
+     id="text142"
+     transform="translate(41.070423)">D</text>
   <defs
      id="defs142">
     <clipPath
@@ -1111,6 +1146,14 @@
      points="632.84,123.12 632.84,120.38 "
      style="stroke:#333333;stroke-width:1.07;stroke-linecap:butt"
      id="polyline176" />
+  <text
+     x="544.71002"
+     y="22.389999"
+     style="font-size:16px;font-family:'Noto Sans'"
+     textLength="8.8999996"
+     lengthAdjust="spacingAndGlyphs"
+     id="text176"
+     transform="translate(41.070423)">E</text>
   <defs
      id="defs176">
     <clipPath
@@ -1350,7 +1393,7 @@
      style="stroke:#333333;stroke-width:1.07;stroke-linecap:butt"
      id="polyline215" />
   <text
-     transform="rotate(90,226.35097,422.13103)"
+     transform="rotate(90,225.60544,421.36827)"
      text-anchor="middle"
      style="font-size:16px;font-family:'Noto Sans'"
      textLength="54.779999"
@@ -2431,7 +2474,7 @@
      style="stroke:#333333;stroke-width:1.07;stroke-linecap:butt"
      id="polyline397" />
   <text
-     transform="rotate(90,166.22197,482.24403)"
+     transform="rotate(90,165.46397,481.48603)"
      text-anchor="middle"
      style="font-size:16px;font-family:'Noto Sans'"
      textLength="54.779999"
@@ -3508,7 +3551,7 @@
      style="stroke:#333333;stroke-width:1.07;stroke-linecap:butt"
      id="polyline578" />
   <text
-     transform="rotate(90,105.97597,542.50603)"
+     transform="rotate(90,105.21797,541.74803)"
      text-anchor="middle"
      style="font-size:16px;font-family:'Noto Sans'"
      textLength="54.779999"
@@ -4343,28 +4386,14 @@
        id="polyline719" />
   </g>
   <defs
-     id="defs719">
-    <clipPath
-       id="cpNS40OHwxNDYuMzZ8NTA3LjczfDY0Mi41Mg==">
-      <rect
-         x="5.48"
-         y="507.73"
-         width="140.88"
-         height="134.79"
-         id="rect719" />
-    </clipPath>
-  </defs>
-  <g
-     clip-path="url(#cpNS40OHwxNDYuMzZ8NTA3LjczfDY0Mi41Mg==)"
-     id="g720">
-    <rect
-       x="5.48"
-       y="507.73"
-       width="140.88"
-       height="134.79"
-       style="stroke-width: 1.07; stroke: #FFFFFF; fill: #FFFFFF;"
-       id="rect720" />
-  </g>
+     id="defs719" />
+  <rect
+     x="5.48"
+     y="507.73001"
+     width="140.88"
+     height="134.78999"
+     style="fill:#ffffff;stroke:#ffffff;stroke-width:1.07"
+     id="rect720" />
   <g
      clip-path="url(#cpMC4wMHw2NDguMDB8MC4wMHw2NDguMDA=)"
      id="g721" />
@@ -4601,7 +4630,7 @@
      lengthAdjust="spacingAndGlyphs"
      id="text757">8</text>
   <text
-     transform="rotate(90,45.84197,602.62403)"
+     transform="rotate(90,45.083968,601.86603)"
      text-anchor="middle"
      style="font-size:16px;font-family:'Noto Sans'"
      textLength="54.779999"
@@ -5576,92 +5605,49 @@
        id="text910">8</text>
   </g>
   <text
-     x="59.299999"
-     y="22.389999"
-     style="font-size:16px;font-family:'Noto Sans';white-space:pre"
-     textLength="10.22"
-     lengthAdjust="spacingAndGlyphs"
-     id="text47"
-     transform="translate(40.500051,4.7e-4)">A</text>
-  <text
-     x="181.19"
-     y="22.389999"
-     style="font-size:16px;font-family:'Noto Sans';white-space:pre"
-     textLength="10.4"
-     lengthAdjust="spacingAndGlyphs"
-     id="text85"
-     transform="translate(40.500051,4.7e-4)">B</text>
-  <text
-     x="303.07999"
-     y="22.389999"
-     style="font-size:16px;font-family:'Noto Sans';white-space:pre"
-     textLength="10.11"
-     lengthAdjust="spacingAndGlyphs"
-     id="text122"
-     transform="translate(40.500051,4.7e-4)">C</text>
-  <text
-     x="424.97"
-     y="22.389999"
-     style="font-size:16px;font-family:'Noto Sans';white-space:pre"
-     textLength="11.68"
-     lengthAdjust="spacingAndGlyphs"
-     id="text160"
-     transform="translate(40.500051,4.7e-4)">D</text>
-  <text
-     x="546.85999"
-     y="22.389999"
-     style="font-size:16px;font-family:'Noto Sans';white-space:pre"
-     textLength="8.8999996"
-     lengthAdjust="spacingAndGlyphs"
-     id="text199"
-     transform="translate(40.500051,4.7e-4)">E</text>
-  <text
      xml:space="preserve"
-     style="font-style:italic;font-size:16px;font-family:Arial;-inkscape-font-specification:'Arial Italic';text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;white-space:pre;fill:#1a1a1a;stroke-width:0.75"
-     x="316.86627"
-     y="-668.18713"
-     id="text1070"
+     style="font-size:16px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;white-space:pre;fill:#000000;stroke:none;stroke-width:2.83465;stroke-linejoin:round"
+     x="317.07376"
+     y="-670.78833"
+     id="text982"
      transform="rotate(90)"><tspan
        sodipodi:role="line"
-       id="tspan1069"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial;fill:#1a1a1a;stroke-width:0.75"
-       x="316.86627"
-       y="-668.18713">CDS</tspan></text>
+       id="tspan982"
+       style="font-size:16px;fill:#000000;stroke:none;stroke-width:2.83465"
+       x="317.07376"
+       y="-670.78833">CDS</tspan></text>
   <text
      xml:space="preserve"
-     style="font-style:italic;font-size:16px;font-family:Arial;-inkscape-font-specification:'Arial Italic';text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;white-space:pre;fill:#1a1a1a;stroke-width:0.75"
-     x="-316.82721"
-     y="18.140249"
+     style="font-size:16px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;white-space:pre;fill:#000000;stroke:none;stroke-width:2.83465;stroke-linejoin:round"
+     x="342.92282"
+     y="638.27545"
+     id="text1072"><tspan
+       sodipodi:role="line"
+       id="tspan1072"
+       style="font-size:16px;fill:#000000;stroke:none;stroke-width:2.83465"
+       x="342.92282"
+       y="638.27545">Time (h)</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:16px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;white-space:pre;fill:#000000;stroke:none;stroke-width:2.83465;stroke-linejoin:round"
+     x="-314.76602"
+     y="17.60125"
      id="text1071"
      transform="rotate(-90)"><tspan
        sodipodi:role="line"
-       id="tspan1070"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial;fill:#1a1a1a;stroke-width:0.75"
-       x="-316.82721"
-       y="18.140249">OD660</tspan></text>
-  <text
-     xml:space="preserve"
-     style="font-style:italic;font-size:16px;font-family:Arial;-inkscape-font-specification:'Arial Italic';text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;white-space:pre;fill:#1a1a1a;stroke-width:0.75"
-     x="347.86401"
-     y="1.3824375"
-     id="text1071-6"><tspan
-       sodipodi:role="line"
-       id="tspan1070-7"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial;fill:#1a1a1a;stroke-width:0.75"
-       x="347.86401"
-       y="1.3824375">RBS</tspan></text>
-  <text
-     xml:space="preserve"
-     style="font-style:italic;font-size:16px;font-family:Arial;-inkscape-font-specification:'Arial Italic';text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;white-space:pre;fill:#1a1a1a;stroke-width:0.75"
-     x="347.86401"
-     y="638.88245"
-     id="text1072"
-     inkscape:export-filename="figure_s6.svg"
-     inkscape:export-xdpi="96"
-     inkscape:export-ydpi="96"><tspan
-       sodipodi:role="line"
        id="tspan1071"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial;fill:#1a1a1a;stroke-width:0.75"
-       x="347.86401"
-       y="638.88245">Time (h)</tspan></text>
+       style="font-size:16px;fill:#000000;stroke:none;stroke-width:2.83465"
+       x="-314.76602"
+       y="17.60125">RFS</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:16px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;white-space:pre;fill:#000000;stroke:none;stroke-width:2.83465;stroke-linejoin:round"
+     x="343.8584"
+     y="-3.7325625"
+     id="text981"><tspan
+       sodipodi:role="line"
+       id="tspan980"
+       style="font-size:16px;fill:#000000;stroke:none;stroke-width:2.83465"
+       x="343.8584"
+       y="-3.7325625">RBS</tspan></text>
 </svg>

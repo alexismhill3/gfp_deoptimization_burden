@@ -8,6 +8,9 @@
    id="svg900"
    sodipodi:docname="figure_s8.svg"
    inkscape:version="1.4 (e7c3feb100, 2024-10-09)"
+   inkscape:export-filename="figure_s8.png"
+   inkscape:export-xdpi="600"
+   inkscape:export-ydpi="600"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -22,11 +25,11 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="pt"
-     inkscape:zoom="0.50905141"
-     inkscape:cx="281.89687"
-     inkscape:cy="379.13656"
+     inkscape:zoom="0.49305556"
+     inkscape:cx="410.70423"
+     inkscape:cy="365.07042"
      inkscape:window-width="1199"
-     inkscape:window-height="1068"
+     inkscape:window-height="1188"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
@@ -231,16 +234,16 @@
        style="stroke-width: 1.07; stroke: #000000; stroke-opacity: 0.30; stroke-linecap: butt;"
        id="polyline29" />
     <line
-       x1="70.23"
+       x1="73.73"
        y1="120.38"
-       x2="70.23"
+       x2="73.73"
        y2="31.71"
        style="stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;"
        id="line29" />
     <line
-       x1="84.22"
+       x1="87.72"
        y1="120.38"
-       x2="84.22"
+       x2="87.72"
        y2="31.71"
        style="stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;"
        id="line30" />
@@ -317,12 +320,20 @@
      style="stroke:#333333;stroke-width:1.07;stroke-linecap:butt"
      id="polyline40" />
   <text
-     transform="rotate(90,286.7281,361.76991)"
+     transform="rotate(90,285.96209,361.00391)"
      text-anchor="middle"
      style="font-size:16px;font-family:'Noto Sans'"
      textLength="29.23"
      lengthAdjust="spacingAndGlyphs"
      id="text40">CTA</text>
+  <text
+     x="48.549999"
+     y="22.389999"
+     style="font-size:16px;font-family:'Noto Sans'"
+     textLength="10.22"
+     lengthAdjust="spacingAndGlyphs"
+     id="text41"
+     transform="translate(41.070001)">A</text>
   <defs
      id="defs41">
     <clipPath
@@ -460,16 +471,16 @@
        style="stroke-width: 1.07; stroke: #000000; stroke-opacity: 0.30; stroke-linecap: butt;"
        id="polyline65" />
     <line
-       x1="194.27"
+       x1="197.77"
        y1="120.38"
-       x2="194.27"
+       x2="197.77"
        y2="31.71"
        style="stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;"
        id="line65" />
     <line
-       x1="208.26"
+       x1="211.76"
        y1="120.38"
-       x2="208.26"
+       x2="211.76"
        y2="31.71"
        style="stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;"
        id="line66" />
@@ -513,6 +524,14 @@
      points="260.72,123.12 260.72,120.38 "
      style="stroke:#333333;stroke-width:1.07;stroke-linecap:butt"
      id="polyline73" />
+  <text
+     x="172.59"
+     y="22.389999"
+     style="font-size:16px;font-family:'Noto Sans'"
+     textLength="10.4"
+     lengthAdjust="spacingAndGlyphs"
+     id="text73"
+     transform="translate(41.070001)">B</text>
   <defs
      id="defs73">
     <clipPath
@@ -650,16 +669,16 @@
        style="stroke-width: 1.07; stroke: #000000; stroke-opacity: 0.30; stroke-linecap: butt;"
        id="polyline97" />
     <line
-       x1="318.31"
+       x1="321.81"
        y1="120.38"
-       x2="318.31"
+       x2="321.81"
        y2="31.71"
        style="stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;"
        id="line97" />
     <line
-       x1="332.30"
+       x1="335.80"
        y1="120.38"
-       x2="332.30"
+       x2="335.80"
        y2="31.71"
        style="stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;"
        id="line98" />
@@ -703,29 +722,23 @@
      points="384.76,123.12 384.76,120.38 "
      style="stroke:#333333;stroke-width:1.07;stroke-linecap:butt"
      id="polyline105" />
+  <text
+     x="296.63"
+     y="22.389999"
+     style="font-size:16px;font-family:'Noto Sans'"
+     textLength="10.11"
+     lengthAdjust="spacingAndGlyphs"
+     id="text105"
+     transform="translate(41.070001)">C</text>
   <defs
-     id="defs105">
-    <clipPath
-       id="cpMzk0LjQ0fDUxOC40OHw1LjQ4fDE0Ni42MQ==">
-      <rect
-         x="394.44"
-         y="5.48"
-         width="124.04"
-         height="141.13"
-         id="rect105" />
-    </clipPath>
-  </defs>
-  <g
-     clip-path="url(#cpMzk0LjQ0fDUxOC40OHw1LjQ4fDE0Ni42MQ==)"
-     id="g106">
-    <rect
-       x="394.44"
-       y="5.48"
-       width="124.04"
-       height="141.13"
-       style="stroke-width: 1.07; stroke: #FFFFFF; fill: #FFFFFF;"
-       id="rect106" />
-  </g>
+     id="defs105" />
+  <rect
+     x="394.44"
+     y="5.48"
+     width="124.04"
+     height="141.13"
+     style="fill:#ffffff;stroke:#ffffff;stroke-width:1.07"
+     id="rect106" />
   <g
      clip-path="url(#cpMC4wMHw2NDguMDB8MC4wMHw2NDguMDA=)"
      id="g107" />
@@ -832,16 +845,16 @@
        style="stroke-width: 1.07; stroke: #000000; stroke-opacity: 0.30; stroke-linecap: butt;"
        id="polyline127" />
     <line
-       x1="442.35"
+       x1="445.85"
        y1="120.38"
-       x2="442.35"
+       x2="445.85"
        y2="31.71"
        style="stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;"
        id="line127" />
     <line
-       x1="456.34"
+       x1="459.84"
        y1="120.38"
-       x2="456.34"
+       x2="459.84"
        y2="31.71"
        style="stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;"
        id="line128" />
@@ -885,6 +898,14 @@
      points="508.80,123.12 508.80,120.38 "
      style="stroke:#333333;stroke-width:1.07;stroke-linecap:butt"
      id="polyline135" />
+  <text
+     x="420.67001"
+     y="22.389999"
+     style="font-size:16px;font-family:'Noto Sans'"
+     textLength="11.68"
+     lengthAdjust="spacingAndGlyphs"
+     id="text135"
+     transform="translate(41.070001)">D</text>
   <defs
      id="defs135">
     <clipPath
@@ -1018,16 +1039,16 @@
        style="stroke-width: 1.07; stroke: #000000; stroke-opacity: 0.30; stroke-linecap: butt;"
        id="polyline158" />
     <line
-       x1="566.39"
+       x1="569.89"
        y1="120.38"
-       x2="566.39"
+       x2="569.89"
        y2="31.71"
        style="stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;"
        id="line158" />
     <line
-       x1="580.38"
+       x1="583.88"
        y1="120.38"
-       x2="580.38"
+       x2="583.88"
        y2="31.71"
        style="stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;"
        id="line159" />
@@ -1071,6 +1092,14 @@
      points="632.84,123.12 632.84,120.38 "
      style="stroke:#333333;stroke-width:1.07;stroke-linecap:butt"
      id="polyline166" />
+  <text
+     x="544.71002"
+     y="22.389999"
+     style="font-size:16px;font-family:'Noto Sans'"
+     textLength="8.8999996"
+     lengthAdjust="spacingAndGlyphs"
+     id="text166"
+     transform="translate(41.070001)">E</text>
   <defs
      id="defs166">
     <clipPath
@@ -1212,16 +1241,16 @@
        style="stroke-width: 1.07; stroke: #000000; stroke-opacity: 0.30; stroke-linecap: butt;"
        id="polyline191" />
     <line
-       x1="70.23"
+       x1="73.73"
        y1="240.75"
-       x2="70.23"
+       x2="73.73"
        y2="152.09"
        style="stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;"
        id="line191" />
     <line
-       x1="84.22"
+       x1="87.72"
        y1="240.75"
-       x2="84.22"
+       x2="87.72"
        y2="152.09"
        style="stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;"
        id="line192" />
@@ -1298,7 +1327,7 @@
      style="stroke:#333333;stroke-width:1.07;stroke-linecap:butt"
      id="polyline202" />
   <text
-     transform="rotate(90,225.934,422.56402)"
+     transform="rotate(90,225.16799,421.79801)"
      text-anchor="middle"
      style="font-size:16px;font-family:'Noto Sans'"
      textLength="33.52"
@@ -1441,16 +1470,16 @@
        style="stroke-width: 1.07; stroke: #000000; stroke-opacity: 0.30; stroke-linecap: butt;"
        id="polyline226" />
     <line
-       x1="194.27"
+       x1="197.77"
        y1="240.75"
-       x2="194.27"
+       x2="197.77"
        y2="152.09"
        style="stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;"
        id="line226" />
     <line
-       x1="208.26"
+       x1="211.76"
        y1="240.75"
-       x2="208.26"
+       x2="211.76"
        y2="152.09"
        style="stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;"
        id="line227" />
@@ -1635,16 +1664,16 @@
        style="stroke-width: 1.07; stroke: #000000; stroke-opacity: 0.30; stroke-linecap: butt;"
        id="polyline258" />
     <line
-       x1="318.31"
+       x1="321.81"
        y1="240.75"
-       x2="318.31"
+       x2="321.81"
        y2="152.09"
        style="stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;"
        id="line258" />
     <line
-       x1="332.30"
+       x1="335.80"
        y1="240.75"
-       x2="332.30"
+       x2="335.80"
        y2="152.09"
        style="stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;"
        id="line259" />
@@ -1821,16 +1850,16 @@
        style="stroke-width: 1.07; stroke: #000000; stroke-opacity: 0.30; stroke-linecap: butt;"
        id="polyline288" />
     <line
-       x1="442.35"
+       x1="445.85"
        y1="240.75"
-       x2="442.35"
+       x2="445.85"
        y2="152.09"
        style="stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;"
        id="line288" />
     <line
-       x1="456.34"
+       x1="459.84"
        y1="240.75"
-       x2="456.34"
+       x2="459.84"
        y2="152.09"
        style="stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;"
        id="line289" />
@@ -2003,16 +2032,16 @@
        style="stroke-width: 1.07; stroke: #000000; stroke-opacity: 0.30; stroke-linecap: butt;"
        id="polyline317" />
     <line
-       x1="566.39"
+       x1="569.89"
        y1="240.75"
-       x2="566.39"
+       x2="569.89"
        y2="152.09"
        style="stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;"
        id="line317" />
     <line
-       x1="580.38"
+       x1="583.88"
        y1="240.75"
-       x2="580.38"
+       x2="583.88"
        y2="152.09"
        style="stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;"
        id="line318" />
@@ -2233,16 +2262,16 @@
        style="stroke-width: 1.07; stroke: #000000; stroke-opacity: 0.30; stroke-linecap: butt;"
        id="polyline358" />
     <line
-       x1="70.23"
+       x1="73.73"
        y1="361.13"
-       x2="70.23"
+       x2="73.73"
        y2="272.46"
        style="stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;"
        id="line358" />
     <line
-       x1="84.22"
+       x1="87.72"
        y1="361.13"
-       x2="84.22"
+       x2="87.72"
        y2="272.46"
        style="stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;"
        id="line359" />
@@ -2319,7 +2348,7 @@
      style="stroke:#333333;stroke-width:1.07;stroke-linecap:butt"
      id="polyline369" />
   <text
-     transform="rotate(90,165.94199,482.54002)"
+     transform="rotate(90,165.17598,481.77401)"
      text-anchor="middle"
      style="font-size:16px;font-family:'Noto Sans'"
      textLength="47.93"
@@ -2514,16 +2543,16 @@
        style="stroke-width: 1.07; stroke: #000000; stroke-opacity: 0.30; stroke-linecap: butt;"
        id="polyline406" />
     <line
-       x1="194.27"
+       x1="197.77"
        y1="361.13"
-       x2="194.27"
+       x2="197.77"
        y2="272.46"
        style="stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;"
        id="line406" />
     <line
-       x1="208.26"
+       x1="211.76"
        y1="361.13"
-       x2="208.26"
+       x2="211.76"
        y2="272.46"
        style="stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;"
        id="line407" />
@@ -2744,16 +2773,16 @@
        style="stroke-width: 1.07; stroke: #000000; stroke-opacity: 0.30; stroke-linecap: butt;"
        id="polyline447" />
     <line
-       x1="318.31"
+       x1="321.81"
        y1="361.13"
-       x2="318.31"
+       x2="321.81"
        y2="272.46"
        style="stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;"
        id="line447" />
     <line
-       x1="332.30"
+       x1="335.80"
        y1="361.13"
-       x2="332.30"
+       x2="335.80"
        y2="272.46"
        style="stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;"
        id="line448" />
@@ -2990,16 +3019,16 @@
        style="stroke-width: 1.07; stroke: #000000; stroke-opacity: 0.30; stroke-linecap: butt;"
        id="polyline492" />
     <line
-       x1="442.35"
+       x1="445.85"
        y1="361.13"
-       x2="442.35"
+       x2="445.85"
        y2="272.46"
        style="stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;"
        id="line492" />
     <line
-       x1="456.34"
+       x1="459.84"
        y1="361.13"
-       x2="456.34"
+       x2="459.84"
        y2="272.46"
        style="stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;"
        id="line493" />
@@ -3232,16 +3261,16 @@
        style="stroke-width: 1.07; stroke: #000000; stroke-opacity: 0.30; stroke-linecap: butt;"
        id="polyline536" />
     <line
-       x1="566.39"
+       x1="569.89"
        y1="361.13"
-       x2="566.39"
+       x2="569.89"
        y2="272.46"
        style="stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;"
        id="line536" />
     <line
-       x1="580.38"
+       x1="583.88"
        y1="361.13"
-       x2="580.38"
+       x2="583.88"
        y2="272.46"
        style="stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;"
        id="line537" />
@@ -3422,16 +3451,16 @@
        style="stroke-width: 1.07; stroke: #000000; stroke-opacity: 0.30; stroke-linecap: butt;"
        id="polyline567" />
     <line
-       x1="70.23"
+       x1="73.73"
        y1="481.50"
-       x2="70.23"
+       x2="73.73"
        y2="392.84"
        style="stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;"
        id="line567" />
     <line
-       x1="84.22"
+       x1="87.72"
        y1="481.50"
-       x2="84.22"
+       x2="87.72"
        y2="392.84"
        style="stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;"
        id="line568" />
@@ -3508,7 +3537,7 @@
      style="stroke:#333333;stroke-width:1.07;stroke-linecap:butt"
      id="polyline578" />
   <text
-     transform="rotate(90,106.14401,542.35401)"
+     transform="rotate(90,105.378,541.588)"
      text-anchor="middle"
      style="font-size:16px;font-family:'Noto Sans'"
      textLength="33.52"
@@ -3651,16 +3680,16 @@
        style="stroke-width: 1.07; stroke: #000000; stroke-opacity: 0.30; stroke-linecap: butt;"
        id="polyline602" />
     <line
-       x1="194.27"
+       x1="197.77"
        y1="481.50"
-       x2="194.27"
+       x2="197.77"
        y2="392.84"
        style="stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;"
        id="line602" />
     <line
-       x1="208.26"
+       x1="211.76"
        y1="481.50"
-       x2="208.26"
+       x2="211.76"
        y2="392.84"
        style="stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;"
        id="line603" />
@@ -3837,16 +3866,16 @@
        style="stroke-width: 1.07; stroke: #000000; stroke-opacity: 0.30; stroke-linecap: butt;"
        id="polyline632" />
     <line
-       x1="318.31"
+       x1="321.81"
        y1="481.50"
-       x2="318.31"
+       x2="321.81"
        y2="392.84"
        style="stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;"
        id="line632" />
     <line
-       x1="332.30"
+       x1="335.80"
        y1="481.50"
-       x2="332.30"
+       x2="335.80"
        y2="392.84"
        style="stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;"
        id="line633" />
@@ -4031,16 +4060,16 @@
        style="stroke-width: 1.07; stroke: #000000; stroke-opacity: 0.30; stroke-linecap: butt;"
        id="polyline664" />
     <line
-       x1="442.35"
+       x1="445.85"
        y1="481.50"
-       x2="442.35"
+       x2="445.85"
        y2="392.84"
        style="stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;"
        id="line664" />
     <line
-       x1="456.34"
+       x1="459.84"
        y1="481.50"
-       x2="456.34"
+       x2="459.84"
        y2="392.84"
        style="stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;"
        id="line665" />
@@ -4221,16 +4250,16 @@
        style="stroke-width: 1.07; stroke: #000000; stroke-opacity: 0.30; stroke-linecap: butt;"
        id="polyline695" />
     <line
-       x1="566.39"
+       x1="569.89"
        y1="481.50"
-       x2="566.39"
+       x2="569.89"
        y2="392.84"
        style="stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;"
        id="line695" />
     <line
-       x1="580.38"
+       x1="583.88"
        y1="481.50"
-       x2="580.38"
+       x2="583.88"
        y2="392.84"
        style="stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;"
        id="line696" />
@@ -4415,16 +4444,16 @@
        style="stroke-width: 1.07; stroke: #000000; stroke-opacity: 0.30; stroke-linecap: butt;"
        id="polyline727" />
     <line
-       x1="65.86"
+       x1="68.48"
        y1="601.88"
-       x2="65.86"
+       x2="68.48"
        y2="513.21"
        style="stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;"
        id="line727" />
     <line
-       x1="76.35"
+       x1="78.97"
        y1="601.88"
-       x2="76.35"
+       x2="78.97"
        y2="513.21"
        style="stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;"
        id="line728" />
@@ -4545,7 +4574,7 @@
      lengthAdjust="spacingAndGlyphs"
      id="text743">8</text>
   <text
-     transform="rotate(90,45.369985,603.12803)"
+     transform="rotate(90,44.603977,602.36202)"
      text-anchor="middle"
      style="font-size:16px;font-family:'Noto Sans'"
      textLength="34.950001"
@@ -4696,16 +4725,16 @@
        style="stroke-width: 1.07; stroke: #000000; stroke-opacity: 0.30; stroke-linecap: butt;"
        id="polyline770" />
     <line
-       x1="189.90"
+       x1="192.52"
        y1="601.88"
-       x2="189.90"
+       x2="192.52"
        y2="513.21"
        style="stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;"
        id="line770" />
     <line
-       x1="200.39"
+       x1="203.01"
        y1="601.88"
-       x2="200.39"
+       x2="203.01"
        y2="513.21"
        style="stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;"
        id="line771" />
@@ -4942,16 +4971,16 @@
        style="stroke-width: 1.07; stroke: #000000; stroke-opacity: 0.30; stroke-linecap: butt;"
        id="polyline809" />
     <line
-       x1="313.94"
+       x1="316.56"
        y1="601.88"
-       x2="313.94"
+       x2="316.56"
        y2="513.21"
        style="stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;"
        id="line809" />
     <line
-       x1="324.43"
+       x1="327.06"
        y1="601.88"
-       x2="324.43"
+       x2="327.06"
        y2="513.21"
        style="stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;"
        id="line810" />
@@ -5188,16 +5217,16 @@
        style="stroke-width: 1.07; stroke: #000000; stroke-opacity: 0.30; stroke-linecap: butt;"
        id="polyline848" />
     <line
-       x1="437.98"
+       x1="440.60"
        y1="601.88"
-       x2="437.98"
+       x2="440.60"
        y2="513.21"
        style="stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;"
        id="line848" />
     <line
-       x1="448.47"
+       x1="451.10"
        y1="601.88"
-       x2="448.47"
+       x2="451.10"
        y2="513.21"
        style="stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;"
        id="line849" />
@@ -5434,16 +5463,16 @@
        style="stroke-width: 1.07; stroke: #000000; stroke-opacity: 0.30; stroke-linecap: butt;"
        id="polyline887" />
     <line
-       x1="562.02"
+       x1="564.64"
        y1="601.88"
-       x2="562.02"
+       x2="564.64"
        y2="513.21"
        style="stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;"
        id="line887" />
     <line
-       x1="572.51"
+       x1="575.14"
        y1="601.88"
-       x2="572.51"
+       x2="575.14"
        y2="513.21"
        style="stroke-width: 1.07; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;"
        id="line888" />
@@ -5536,92 +5565,49 @@
        id="text900">8</text>
   </g>
   <text
-     x="59.299999"
-     y="22.389999"
-     style="font-size:16px;font-family:'Noto Sans';white-space:pre"
-     textLength="10.22"
-     lengthAdjust="spacingAndGlyphs"
-     id="text47"
-     transform="translate(40.500051,4.7e-4)">A</text>
-  <text
-     x="181.19"
-     y="22.389999"
-     style="font-size:16px;font-family:'Noto Sans';white-space:pre"
-     textLength="10.4"
-     lengthAdjust="spacingAndGlyphs"
-     id="text85"
-     transform="translate(40.500051,4.7e-4)">B</text>
-  <text
-     x="303.07999"
-     y="22.389999"
-     style="font-size:16px;font-family:'Noto Sans';white-space:pre"
-     textLength="10.11"
-     lengthAdjust="spacingAndGlyphs"
-     id="text122"
-     transform="translate(40.500051,4.7e-4)">C</text>
-  <text
-     x="424.97"
-     y="22.389999"
-     style="font-size:16px;font-family:'Noto Sans';white-space:pre"
-     textLength="11.68"
-     lengthAdjust="spacingAndGlyphs"
-     id="text160"
-     transform="translate(40.500051,4.7e-4)">D</text>
-  <text
-     x="546.85999"
-     y="22.389999"
-     style="font-size:16px;font-family:'Noto Sans';white-space:pre"
-     textLength="8.8999996"
-     lengthAdjust="spacingAndGlyphs"
-     id="text199"
-     transform="translate(40.500051,4.7e-4)">E</text>
-  <text
      xml:space="preserve"
-     style="font-style:italic;font-size:16px;font-family:Arial;-inkscape-font-specification:'Arial Italic';text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;white-space:pre;fill:#1a1a1a;stroke-width:0.75"
-     x="316.86627"
-     y="-668.18713"
-     id="text1070"
+     style="font-size:16px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;white-space:pre;fill:#000000;stroke:none;stroke-width:2.83465;stroke-linejoin:round"
+     x="317.07376"
+     y="-670.78833"
+     id="text982"
      transform="rotate(90)"><tspan
        sodipodi:role="line"
-       id="tspan1069"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial;fill:#1a1a1a;stroke-width:0.75"
-       x="316.86627"
-       y="-668.18713">CDS</tspan></text>
+       id="tspan982"
+       style="font-size:16px;fill:#000000;stroke:none;stroke-width:2.83465"
+       x="317.07376"
+       y="-670.78833">CDS</tspan></text>
   <text
      xml:space="preserve"
-     style="font-style:italic;font-size:16px;font-family:Arial;-inkscape-font-specification:'Arial Italic';text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;white-space:pre;fill:#1a1a1a;stroke-width:0.75"
-     x="-316.82721"
-     y="18.140249"
+     style="font-size:16px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;white-space:pre;fill:#000000;stroke:none;stroke-width:2.83465;stroke-linejoin:round"
+     x="342.92245"
+     y="638.27545"
+     id="text1072"><tspan
+       sodipodi:role="line"
+       id="tspan1072"
+       style="font-size:16px;fill:#000000;stroke:none;stroke-width:2.83465"
+       x="342.92245"
+       y="638.27545">Time (h)</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:16px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;white-space:pre;fill:#000000;stroke:none;stroke-width:2.83465;stroke-linejoin:round"
+     x="-314.76605"
+     y="17.601437"
      id="text1071"
      transform="rotate(-90)"><tspan
        sodipodi:role="line"
-       id="tspan1070"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial;fill:#1a1a1a;stroke-width:0.75"
-       x="-316.82721"
-       y="18.140249">OD660</tspan></text>
-  <text
-     xml:space="preserve"
-     style="font-style:italic;font-size:16px;font-family:Arial;-inkscape-font-specification:'Arial Italic';text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;white-space:pre;fill:#1a1a1a;stroke-width:0.75"
-     x="347.86401"
-     y="1.3824375"
-     id="text1071-6"><tspan
-       sodipodi:role="line"
-       id="tspan1070-7"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial;fill:#1a1a1a;stroke-width:0.75"
-       x="347.86401"
-       y="1.3824375">RBS</tspan></text>
-  <text
-     xml:space="preserve"
-     style="font-style:italic;font-size:16px;font-family:Arial;-inkscape-font-specification:'Arial Italic';text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;white-space:pre;fill:#1a1a1a;stroke-width:0.75"
-     x="347.86401"
-     y="638.88245"
-     id="text1072"
-     inkscape:export-filename="figure_s8.svg"
-     inkscape:export-xdpi="96"
-     inkscape:export-ydpi="96"><tspan
-       sodipodi:role="line"
        id="tspan1071"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial;fill:#1a1a1a;stroke-width:0.75"
-       x="347.86401"
-       y="638.88245">Time (h)</tspan></text>
+       style="font-size:16px;fill:#000000;stroke:none;stroke-width:2.83465"
+       x="-314.76605"
+       y="17.601437">GFS</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:16px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;white-space:pre;fill:#000000;stroke:none;stroke-width:2.83465;stroke-linejoin:round"
+     x="343.8584"
+     y="-3.7325625"
+     id="text981"><tspan
+       sodipodi:role="line"
+       id="tspan980"
+       style="font-size:16px;fill:#000000;stroke:none;stroke-width:2.83465"
+       x="343.8584"
+       y="-3.7325625">RBS</tspan></text>
 </svg>

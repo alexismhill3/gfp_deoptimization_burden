@@ -66,10 +66,9 @@ plot_grid <- function(df){
 window_size = 4
 
 # -- mCherry
-mch_time_start <- 11700+900*-2
+mch_time_start <- 8100
 t1 = mch_time_start-900*window_size
 t3 = mch_time_start
-shift_amnt = -3
 
 
 df = read.csv("../processed_data/experimental_per_mcherry.csv")
@@ -81,10 +80,9 @@ grid
 ggsave('fluor_grid/figure_s5.svg', grid, width = 9, height = 9)
 
 # -- sfGFP
-gfp_time_start <- 11700+900*-2
+gfp_time_start <- 8100
 t1 = gfp_time_start-900*window_size
 t3 = gfp_time_start
-shift_amnt = 0
 
 df = read.csv("../processed_data/experimental_per_gfp.csv")
 df <- df %>% filter(groupID %in% okay_measurements)

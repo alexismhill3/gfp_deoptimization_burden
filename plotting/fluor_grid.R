@@ -21,8 +21,8 @@ plot_fluor <- function(df, strain_name, maxy){
   subplot <- ggplot() + 
     geom_line(data=filtered_master, aes(x = time, y = fluor, group=groupID), alpha = 0.3) +
     scale_x_time(breaks = scales::breaks_width("2 hours"), labels=NULL, limits=c(0, 900*4*6)) +
-    geom_vline(xintercept=t1-900*shift_amnt, linetype='dashed') +
-    geom_vline(xintercept=t3-900*shift_amnt, linetype='dashed') + 
+    geom_vline(xintercept=t1, linetype='dashed') +
+    geom_vline(xintercept=t3, linetype='dashed') + 
     scale_y_continuous(limit=c(0, maxy), labels=NULL) + xlab("") + 
     ylab("") + theme_bw() +
     theme(text = element_text(size = 16, family="Arial MS"), legend.position="none",
@@ -64,10 +64,9 @@ plot_grid <- function(df, maxy){
 window_size = 4
 
 # -- mCherry
-mch_time_start <- 8100
+mch_time_start <- 11700
 t1 = mch_time_start-900*window_size
 t3 = mch_time_start
-shift_amnt = -4
 
 maxy = 15
 
@@ -80,10 +79,9 @@ grid
 ggsave('fluor_grid/figure_s6.svg', grid, width = 9, height = 9)
 
 # -- sfGFP percent
-gfp_time_start <- 8100
+gfp_time_start <- 9000
 t1 = gfp_time_start-900*window_size
 t3 = gfp_time_start
-shift_amnt = 0
 
 maxy = 15
 
@@ -97,10 +95,9 @@ ggsave('fluor_grid/figure_s4.svg', grid, width = 9, height = 9)
 
 
 # -- sfGFP sat
-gfp_time_start <- 8100
+gfp_time_start <- 9000
 t1 = gfp_time_start-900*window_size
 t3 = gfp_time_start
-shift_amnt = 0
 
 maxy = 15
 
