@@ -13,8 +13,8 @@ import statistics
 from Bio import Entrez, SeqIO
 
 # Set your email (required for NCBI Entrez usage)
-Entrez.email = "email"  # Replace with your actual email
-Entrez.api_key = "apikey"
+Entrez.email = "croots@utexas.edu"  # Replace with your actual email
+Entrez.api_key = "c07be285352b8b13029b0cd1f4feb9395c08"
 
 def fetch_cds_by_locus_tag(locus_tag):
     print(locus_tag)
@@ -105,9 +105,9 @@ def main():
     #df = pd.read_csv("covert2004.csv")
     #df = df[df['Accession'].notna()]
     #gene = fetch_cds_by_locus_tag("b0001")
-    #df['cds']=np.where(df.cds=='',df.Accession.map(fetch_cds_by_locus_tag),df.cds).astype(str)
+    #df['cds']=df.Accession.map(fetch_cds_by_locus_tag).astype(str)
 
-    #df.to_csv("with_seq.csv")
+    #df.to_csv("test.csv")
     df = pd.read_csv("with_seq.csv")
 
     df['avg'] = (df["ec_aer_wild_O_a"] + df["ec_aer_wild_O_b"] + df["ec_aer_wild_O_c"])/3
@@ -116,12 +116,8 @@ def main():
     df = df[df.cds.astype(str).str.len() % 3 == 0]
     top_5_per = int(len(df)*0.05)
     df = df.sort_values(by="avg", ascending=False)
-    df = df.head(top_5_per)
-
     df['fop']= df.cds.map(calc_Fop)
-    print(df)
-    print(statistics.mean(df['fop']))
-
+    df = df.to_csv("with_fop.csv")
 
 if __name__ == "__main__":
     main()
